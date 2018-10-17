@@ -2,9 +2,9 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
 import { loadAuthToken } from './utils/local-storage';
-import authReducer from './reducers/auth.reducer';
-import protectedDataReducer from './reducers/protected-data';
-import { setAuthToken, refreshAuthToken } from './actions/auth.action';
+import authReducer from './_reducers/auth.reducer';
+import protectedDataReducer from './_reducers/protected-data';
+import { setAuthToken, refreshAuthToken } from './_actions/auth.action';
 
 //add in Redux devtools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

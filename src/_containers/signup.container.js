@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import Header from '../components/header.component';
-import SignUpForm from '../components/signupForm.component';
+import Header from '../_components/header.component';
+import SignUpForm from '../_components/signupForm.component';
 
 export function SignUp(props) {
-  if (!props.authToken) {
+  if (props.loggedIn) {
     return <Redirect to="/dashboard" />;
   }
 
@@ -20,8 +20,7 @@ export function SignUp(props) {
 }
 
 const mapStateToProps = state => ({
-  //loggedIn: state.auth.currentUser !== null,
-  authToken: state.auth.authToken
+  loggedIn: state.auth.currentUser !== null
 });
 
 export default connect(mapStateToProps)(SignUp);

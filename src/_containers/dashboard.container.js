@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { Redirect } from 'react-router-dom';
 
-import DashHeader from '../components/dashHeader.component';
+import DashHeader from '../_components/dashHeader.component';
 
 const Dashboard = () => (
   <React.Fragment>

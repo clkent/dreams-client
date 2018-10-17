@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
-import { signUpUser } from '../actions/users.action';
-import { login } from '../actions/auth.action';
+import { signUpUser } from '../_actions/users.action';
+import { login } from '../_actions/auth.action';
 import Input from './input.component';
 import {
   required,
