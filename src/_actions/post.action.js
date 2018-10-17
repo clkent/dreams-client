@@ -3,13 +3,20 @@ import { SubmissionError } from 'redux-form';
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from './utils';
 
-export const signUpUser = user => dispatch => {
-  return fetch(`${API_BASE_URL}/user`, {
+export const submitPostForm = post => (dispatch, getState) => {
+  const { title, content } = post;
+  const authToken = localStorage.getItem('authToken');
+  return fetch(`${API_BASE_URL}/post`, {
     method: 'POST',
+    mode: 'cors',
     headers: {
-      'content-type': 'application/json'
+      'content-type': 'application/json',
+      authorization: `Bearer ${authToken}`
     },
-    body: JSON.stringify(user)
+    body: JSON.stringify({
+      title,
+      content
+    })
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
@@ -18,7 +25,7 @@ export const signUpUser = user => dispatch => {
       // Convert ValidationErrors into SubmissionErrors for Redux Form
       return Promise.reject(
         new SubmissionError({
-          username: message
+          title: message
         })
       );
     });

@@ -9,16 +9,13 @@ import NotFound from './pages/notFound';
 const AppRouter = () => (
   <BrowserRouter>
     <React.Fragment>
-      <div className="container">
-        <Switch>
-          <Route path="/" component={Home} exact={true} />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/login" component={LogIn} />
-          <Route path="/dashboard" component={Dashboard} />
-          {/* <Route path="/contact" component={Contact} />*/}
-          <Route component={NotFound} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/" component={Home} exact={true} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/login" component={LogIn} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route component={NotFound} />
+      </Switch>
     </React.Fragment>
   </BrowserRouter>
 );

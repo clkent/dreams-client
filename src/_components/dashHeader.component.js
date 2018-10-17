@@ -9,6 +9,7 @@ const DashHeader = props => {
   }
   return (
     <header>
+      {/* TODO: settings link */}
       <button
         onClick={() => {
           props.dispatch(clearAuth());
@@ -21,12 +22,8 @@ const DashHeader = props => {
   );
 };
 
-function mapStateToProps(state, props) {
-  console.log('CURRENT STATE:');
-  console.log(state);
-  return {
-    loggedIn: state.auth.currentUser !== null
-  };
-}
+const mapStateToProps = state => ({
+  loggedIn: state.auth.currentUser !== null
+});
 
 export default connect(mapStateToProps)(DashHeader);

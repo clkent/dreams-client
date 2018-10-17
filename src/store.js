@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import { loadAuthToken } from './utils/local-storage';
 import authReducer from './_reducers/auth.reducer';
 import protectedDataReducer from './_reducers/protected-data';
+import dashboardReducer from './_reducers/dashboard.reducer';
 import { setAuthToken, refreshAuthToken } from './_actions/auth.action';
 
 //add in Redux devtools
@@ -13,7 +14,8 @@ const store = createStore(
   combineReducers({
     form: formReducer,
     auth: authReducer,
-    protectedData: protectedDataReducer
+    protectedData: protectedDataReducer,
+    dashboard: dashboardReducer
   }),
   composeEnhancers(applyMiddleware(thunk))
 );
