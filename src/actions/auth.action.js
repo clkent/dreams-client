@@ -36,7 +36,9 @@ export const authError = error => ({
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
 const storeAuthInfo = (authToken, dispatch) => {
+  console.log(authToken);
   const decodedToken = jwtDecode(authToken);
+
   dispatch(setAuthToken(authToken));
   dispatch(authSuccess(decodedToken.user));
   saveAuthToken(authToken);
@@ -47,6 +49,7 @@ export const login = (username, password) => dispatch => {
   return (
     fetch(`${API_BASE_URL}/auth/login`, {
       method: 'POST',
+      mode: 'cors',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -61,6 +64,7 @@ export const login = (username, password) => dispatch => {
       .then(res => res.json())
       .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
       .catch(err => {
+        console.log(err);
         const { code } = err;
         const message =
           code === 401

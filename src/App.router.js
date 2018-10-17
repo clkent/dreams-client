@@ -4,7 +4,6 @@ import Home from './pages/home';
 import SignUp from './containers/signup.container';
 import LogIn from './containers/login.container';
 import Dashboard from './containers/dashboard.container';
-// import Contact from '../components/Contact';
 // import NotFound from '../components/NotFound';
 
 const AppRouter = () => (

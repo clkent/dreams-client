@@ -8,6 +8,7 @@ export default () => Component => {
     if (authenticating) {
       return <div>Logging in...</div>;
     } else if (!loggedIn || error) {
+      console.log(loggedIn);
       return <Redirect to="/" />;
     }
 

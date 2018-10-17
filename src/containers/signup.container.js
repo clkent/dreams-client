@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import Header from '../components/header.component';
-import SignupForm from '../components/signupForm.component';
+import SignUpForm from '../components/signupForm.component';
 
 export function SignUp(props) {
-  if (props.loggedIn) {
+  if (!props.authToken) {
     return <Redirect to="/dashboard" />;
   }
 
@@ -14,13 +14,14 @@ export function SignUp(props) {
     <React.Fragment>
       <Header />
       <h1>Sign Up</h1>
-      <SignupForm />
+      <SignUpForm />
     </React.Fragment>
   );
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.auth.currentUser !== null
+  //loggedIn: state.auth.currentUser !== null,
+  authToken: state.auth.authToken
 });
 
 export default connect(mapStateToProps)(SignUp);

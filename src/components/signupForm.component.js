@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
-import { signupUser } from '../actions/users.action';
+import { signUpUser } from '../actions/users.action';
 import { login } from '../actions/auth.action';
 import Input from './input.component';
 import {
@@ -13,12 +13,12 @@ import {
 const passwordLength = length({ min: 10, max: 72 });
 const matchesPassword = matches('password');
 
-export class SignupForm extends React.Component {
+export class SignUpForm extends React.Component {
   onSubmit(values) {
     const { username, password, name, email } = values;
     const user = { username, password, name, email };
     return this.props
-      .dispatch(signupUser(user))
+      .dispatch(signUpUser(user))
       .then(() => this.props.dispatch(login(username, password)));
   }
 
@@ -65,7 +65,7 @@ export class SignupForm extends React.Component {
 }
 
 export default reduxForm({
-  form: 'signup',
+  form: 'signUp',
   onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('signup', Object.keys(errors)[0]))
-})(SignupForm);
+    dispatch(focus('signUp', Object.keys(errors)[0]))
+})(SignUpForm);
