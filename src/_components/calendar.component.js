@@ -1,16 +1,35 @@
 import React from 'react';
-import Draggable from './draggable.component';
+import { connect } from 'react-redux';
+import { fetchPosts } from '../_actions/post.action';
 
 class Calendar extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(fetchPosts());
+  }
+
   render() {
     const style = {
-      width: '100px',
-      height: '100px',
+      width: '800px',
+      height: '400px',
       background: 'grey',
       border: '1px solid black'
     };
-    return <div style={style}>I am the calendar</div>;
+
+    return (
+      <div style={style}>
+        <ul>{this.props.title}</ul>
+      </div>
+    );
   }
 }
 
-export default Draggable(Calendar);
+const mapStateToProps = state => {
+  const postTitles = state.title.map((title, index) => {
+    return <li key={index}>{title}</li>;
+  });
+  return {
+    posts: postTitles
+  };
+};
+
+export default connect(mapStateToProps)(Calendar);

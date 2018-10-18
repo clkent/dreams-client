@@ -1,6 +1,8 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
+import { reducer as notifReducer } from 'redux-notifications';
+
 import { loadAuthToken } from './utils/local-storage';
 import authReducer from './_reducers/auth.reducer';
 import protectedDataReducer from './_reducers/protected-data';
@@ -15,7 +17,8 @@ const store = createStore(
     form: formReducer,
     auth: authReducer,
     protectedData: protectedDataReducer,
-    dashboard: dashboardReducer
+    dashboard: dashboardReducer,
+    notifs: notifReducer
   }),
   composeEnhancers(applyMiddleware(thunk))
 );

@@ -2,6 +2,12 @@ import React from 'react';
 // import Draggable from './draggable.component';
 import { Field, reduxForm, focus } from 'redux-form';
 
+import {
+  // reducer as notifReducer,
+  actions as notifActions
+  // Notifs
+} from 'redux-notifications';
+
 import { submitPostForm } from '../_actions/post.action';
 
 export class PostForm extends React.Component {
@@ -9,11 +15,26 @@ export class PostForm extends React.Component {
     const { title, content } = values;
     const post = { title, content };
     return this.props.dispatch(submitPostForm(post));
-    // .then(() => this.props.dispatch(login(username, password)));
+  }
+
+  send() {
+    const { notifSend } = notifActions;
+    this.props.dispatch(
+      notifSend({
+        message: 'Post saved!',
+        kind: 'success',
+        dismissAfter: 4000
+      })
+    );
+  }
+
+  componentDidUpdate() {
+    if (this.props.submitSucceeded) {
+      return this.send();
+    }
   }
 
   render() {
-    console.log(this.props);
     const style = {
       width: '800px',
       height: '400px',
@@ -50,8 +71,17 @@ export class PostForm extends React.Component {
   }
 }
 
-export default reduxForm({
-  form: 'post',
-  onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('signUp', Object.keys(errors)[0]))
-})(PostForm);
+const mapStateToProps = state => {
+  return {
+    submitSucceeded: state.submitSucceeded
+  };
+};
+
+export default reduxForm(
+  {
+    form: 'post',
+    onSubmitFail: (errors, dispatch) =>
+      dispatch(focus('signUp', Object.keys(errors)[0]))
+  },
+  mapStateToProps
+)(PostForm);

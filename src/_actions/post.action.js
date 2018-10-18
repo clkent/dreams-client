@@ -6,6 +6,7 @@ import { normalizeResponseErrors } from './utils';
 export const submitPostForm = post => (dispatch, getState) => {
   const { title, content } = post;
   const authToken = localStorage.getItem('authToken');
+
   return fetch(`${API_BASE_URL}/post`, {
     method: 'POST',
     mode: 'cors',
