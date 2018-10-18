@@ -4,9 +4,12 @@ import thunk from 'redux-thunk';
 import { reducer as notifReducer } from 'redux-notifications';
 
 import { loadAuthToken } from './utils/local-storage';
+
 import authReducer from './_reducers/auth.reducer';
 import protectedDataReducer from './_reducers/protected-data';
 import dashboardReducer from './_reducers/dashboard.reducer';
+import postReducer from './_reducers/post.reducer';
+
 import { setAuthToken, refreshAuthToken } from './_actions/auth.action';
 
 //add in Redux devtools
@@ -18,7 +21,8 @@ const store = createStore(
     auth: authReducer,
     protectedData: protectedDataReducer,
     dashboard: dashboardReducer,
-    notifs: notifReducer
+    notifs: notifReducer,
+    post: postReducer
   }),
   composeEnhancers(applyMiddleware(thunk))
 );
