@@ -11,23 +11,25 @@ import {
 import { submitPostForm } from '../_actions/post.action';
 
 export class PostForm extends React.Component {
+  //on submit of my form I dispatch my submitPostForm from my post.action
   onSubmit(values) {
     const { title, content } = values;
     const post = { title, content };
     return this.props.dispatch(submitPostForm(post));
   }
 
+  //I call send after my component state updates to trigger my notification displaying based on submitSucceeded being true
   send() {
+    //notifActions comes from 'redux-notifications' - a package I'm using to handle my notifications
     const { notifSend } = notifActions;
     this.props.dispatch(
       notifSend({
-        message: 'Post saved!',
+        message: 'Dream saved! View it on your Calendar.',
         kind: 'success',
         dismissAfter: 4000
       })
     );
   }
-
   componentDidUpdate() {
     if (this.props.submitSucceeded) {
       return this.send();
@@ -35,13 +37,17 @@ export class PostForm extends React.Component {
   }
 
   render() {
+    //TODO: move styles
     const style = {
       width: '800px',
       height: '400px',
       background: 'grey',
       border: '1px solid black'
     };
+
+    //set up pristine and submitting to use in my return
     const { pristine, submitting } = this.props;
+
     return (
       <div style={style}>
         <form

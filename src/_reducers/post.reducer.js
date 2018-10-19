@@ -1,13 +1,17 @@
 import {
   FETCH_POSTS_SUCCESS,
   FETCH_POSTS_REQUEST,
-  FETCH_POSTS_ERROR
+  FETCH_POSTS_ERROR,
+  SET_CURRENT_POST,
+  DELETE_CURRENT_POST
 } from '../_actions/post.action';
 
 const initialState = {
   loading: false,
   posts: [],
-  error: null
+  postId: null,
+  error: null,
+  postViewed: false
 };
 
 export default function(state = initialState, action) {
@@ -24,6 +28,14 @@ export default function(state = initialState, action) {
       return Object.assign({}, state, {
         loading: false,
         error: action.error
+      });
+    case SET_CURRENT_POST:
+      return Object.assign({}, state, {
+        postId: action.postId
+      });
+    case DELETE_CURRENT_POST:
+      return Object.assign({}, state, {
+        posts: state.posts.filter(post => post.id !== action.postId)
       });
     default:
       return state;

@@ -31,9 +31,8 @@ function mapStateToProps(state, props) {
   return {
     //TODO: change state based on route clicks above
     loggedIn: state.auth.currentUser !== null,
-    newPostToggle: true,
-    calendarToggle: true,
-    postToggle: false
+    postFormOpen: true,
+    calendarOpen: true
   };
 }
 

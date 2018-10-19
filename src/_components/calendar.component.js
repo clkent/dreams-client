@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../_actions/post.action';
+
+import { fetchPosts, setCurrentPost } from '../_actions/post.action';
+import ViewPost from './postView.component';
 
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
@@ -11,18 +13,35 @@ const localizer = BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 class Calendar extends React.Component {
   componentDidMount() {
+    if (this.props.calendarToggle) {
+      console.log(this.props.calendarToggle);
+    }
     this.props.dispatch(fetchPosts());
   }
 
+  //on select of event on calendar
+  eventClicked(post) {
+    this.props.dispatch(setCurrentPost(post.id));
+  }
+
   render() {
+    //TODO: remove styles here and move to css
     const style = {
       width: '800px',
       height: '400px',
       background: 'grey',
       border: '1px solid black'
     };
-    //TODO: keep working on calendar display
-    //FIXME: there is an issue with viewing +# more or the actual day/week view
+
+    //TODO: make day view the only view available for mobile
+    //.rbc-timeslot-group & .rbc-label & .rbc-current-time-indicator display:none;
+
+    //if postId has a value than display the post - on close (inside ViewPost) it sets the postId back to null
+    let viewPost;
+    if (this.props.postId) {
+      viewPost = <ViewPost />;
+    }
+
     return (
       <div style={style}>
         <BigCalendar
@@ -31,8 +50,12 @@ class Calendar extends React.Component {
           events={this.props.events}
           startAccessor="start"
           endAccessor="end"
-          onSelectEvent={event => alert(event.title)}
+          onSelectEvent={post => this.eventClicked(post)}
+          views={['month', 'day']}
+          step={1440}
+          timeslots={1}
         />
+        {viewPost}
       </div>
     );
   }
@@ -44,21 +67,15 @@ const mapStateToProps = state => {
       id: post.id,
       start: post.createdAt,
       end: post.createdAt,
-      title: post.title
+      title: post.title,
+      content: post.content,
+      allDay: true
     };
   });
   return {
-    events: posts
+    events: posts,
+    postId: state.post.postId
   };
 };
-
-// const mapStateToProps = state => {
-//   const postTitles = state.post.posts.map((post, index) => {
-//     return <li key={index}>{post.title}</li>;
-//   });
-//   return {
-//     title: postTitles
-//   };
-// };
 
 export default connect(mapStateToProps)(Calendar);

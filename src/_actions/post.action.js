@@ -26,6 +26,24 @@ export const fetchPostsError = error => {
   };
 };
 
+//add and remove postID action - used to indicate which post should be displayed
+export const SET_CURRENT_POST = 'SET_CURRENT_POST';
+export const setCurrentPost = postId => {
+  return {
+    type: SET_CURRENT_POST,
+    postId
+  };
+};
+
+//delete post
+export const DELETE_CURRENT_POST = 'DELETE_CURRENT_POST';
+export const deleteCurrentPost = postId => {
+  return {
+    type: DELETE_CURRENT_POST,
+    postId
+  };
+};
+
 //Fetch user's posts async
 export const fetchPosts = () => dispatch => {
   const authToken = localStorage.getItem('authToken');
@@ -44,7 +62,7 @@ export const fetchPosts = () => dispatch => {
 };
 
 //Submit posts async
-export const submitPostForm = post => (dispatch, getState) => {
+export const submitPostForm = post => dispatch => {
   const { title, content } = post;
   const authToken = localStorage.getItem('authToken');
 
@@ -71,4 +89,20 @@ export const submitPostForm = post => (dispatch, getState) => {
         })
       );
     });
+};
+
+//Delete post async
+export const deletePost = postId => dispatch => {
+  const authToken = localStorage.getItem('authToken');
+  dispatch(deleteCurrentPost(postId));
+  return fetch(`${API_BASE_URL}/post/${postId}`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json',
+      authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(dispatch(setCurrentPost(null)))
+    .catch(err => dispatch(fetchPostsError(err)));
 };
