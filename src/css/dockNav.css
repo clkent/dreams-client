@@ -1,0 +1,89 @@
+/*TODO: move css in to appropriate files*/
+
+/* main app css */
+html,
+body {
+  height: 100%;
+  background: #4471e5;
+}
+
+#root {
+  height: 100%;
+}
+
+#root div.main-container {
+  display: grid;
+  grid-template-rows: 60px 1fr 120px;
+  grid-template-columns: 100%;
+  min-height: 100%;
+}
+
+form label {
+  font-size: 1em;
+  padding: 10px 0;
+}
+
+form input,
+form textarea {
+  height: 30px;
+  padding: 10px;
+  font-size: 0.875em;
+  border: 1px solid #e4e4e4;
+}
+
+form textarea {
+  min-height: 200px;
+}
+
+/* dashboard header css */
+
+.main-container header {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* dock nav css */
+nav.dock-nav {
+  display: flex;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+nav.dock-nav a {
+  padding: 15px;
+  font-size: 1.7em;
+  color: black;
+  text-decoration: none;
+  max-width: 50px;
+  max-height: 70px;
+}
+
+nav.dock-nav a img {
+  max-width: 50px;
+}
+
+nav.dock-nav a .cal-date {
+  position: relative;
+  left: 10px;
+  bottom: 44px;
+  font-weight: 600;
+}
+
+/* post css */
+
+.small-browser {
+  max-width: 400px;
+  min-height: 600px;
+  background: url('../imgs/small-browser.png') no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.small-browser form {
+  padding: 80px 30px 20px 30px;
+  max-width: 303px;
+  display: flex;
+  flex-direction: column;
+}

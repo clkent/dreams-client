@@ -14,11 +14,12 @@ class Dashboard extends React.Component {
     return (
       <React.Fragment>
         <DashHeader />
-        <h1>Dashboard</h1>
-        <Switch>
-          <Route path="/dashboard/post" component={PostForm} />
-          <Route path="/dashboard/calendar" component={Calendar} />
-        </Switch>
+        <div className="dashboard-container">
+          <Switch>
+            <Route path="/dashboard/post" component={PostForm} />
+            <Route path="/dashboard/calendar" component={Calendar} />
+          </Switch>
+        </div>
         <DockNav />
       </React.Fragment>
     );
