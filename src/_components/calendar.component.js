@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchPosts, setCurrentPost } from '../_actions/post.action';
 import ViewPost from './postView.component';
 
-import Draggable, { DraggableCore } from 'react-draggable';
+import Draggable from 'react-draggable';
 
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
@@ -12,6 +12,7 @@ import moment from 'moment';
 //TODO: swap out when css is in correct folder
 import '../css/dockNav.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { viewCalendar } from '../_actions/dashboard.action';
 
 // Setup the localizer by providing the moment Object to the correct localizer.
 const localizer = BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
@@ -28,7 +29,6 @@ class Calendar extends React.Component {
 
   render() {
     //TODO: make day view the only view available for mobile
-    //.rbc-timeslot-group & .rbc-label & .rbc-current-time-indicator display:none;
 
     //if postId has a value than display the post - on close (inside ViewPost) it sets the postId back to null
     let viewPost;
@@ -53,14 +53,13 @@ class Calendar extends React.Component {
             <div className="handle">
               <button
                 className="close-btn"
-                onClick={() => this.props.dispatch()} //setCurrentPost(null)
+                onClick={() => this.props.dispatch(viewCalendar(false))}
               >
                 <img alt="close button" src={require('../imgs/x.png')} />
               </button>
             </div>
             <div className="calendar">
               <BigCalendar
-                selectable
                 localizer={localizer}
                 events={this.props.events}
                 startAccessor="start"

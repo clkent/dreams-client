@@ -12,6 +12,7 @@ import Draggable from 'react-draggable';
 
 import { submitPostForm } from '../_actions/post.action';
 import '../css/dockNav.css'; //TODO: replace w/ correct css file
+import { viewPostForm } from '../_actions/dashboard.action';
 
 export class PostForm extends React.Component {
   //on submit of my form I dispatch my submitPostForm from my post.action
@@ -48,7 +49,7 @@ export class PostForm extends React.Component {
       <Draggable
         axis="both"
         handle=".handle"
-        defaultPosition={{ x: 60, y: 60 }}
+        defaultPosition={{ x: 640, y: -260 }}
         position={null}
         grid={[1, 1]}
         onStart={this.handleStart}
@@ -60,7 +61,7 @@ export class PostForm extends React.Component {
           <div className="handle">
             <button
               className="close-btn"
-              onClick={() => this.props.dispatch()} //setCurrentPost(null)
+              onClick={() => this.props.dispatch(viewPostForm(false))}
             >
               <img alt="close button" src={require('../imgs/x.png')} />
             </button>

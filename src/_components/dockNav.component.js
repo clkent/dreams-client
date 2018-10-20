@@ -1,20 +1,29 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { viewCalendar, viewPostForm } from '../_actions/dashboard.action';
 import '../css/dockNav.css';
 
 const DockNav = props => {
+  console.log(props);
   return (
     <nav className="dock-nav">
-      <NavLink to="/dashboard/post">
+      <button onClick={() => props.dispatch(viewPostForm(!props.viewPostForm))}>
         <img alt="make a new post" src={require('../imgs/notepad-icon.png')} />
-      </NavLink>{' '}
-      <br />
-      <NavLink to="/dashboard/calendar">
-        <img alt="open your calendar" src={require('../imgs/cal-icon.png')} />
+      </button>
+      <button onClick={() => props.dispatch(viewCalendar(!props.viewCalendar))}>
         <span className="cal-date">30</span>
-      </NavLink>
+        <img alt="open your calendar" src={require('../imgs/cal-icon.png')} />
+      </button>
     </nav>
   );
 };
 
-export default DockNav;
+const mapStateToProps = state => {
+  return {
+    viewCalendar: state.dashboard.viewCalendar,
+    viewPostForm: state.dashboard.viewPostForm
+  };
+};
+
+export default connect(mapStateToProps)(DockNav);

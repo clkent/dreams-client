@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
 
 import DashHeader from '../_components/dashHeader.component';
 
@@ -11,14 +10,23 @@ import DockNav from '../_components/dockNav.component';
 
 class Dashboard extends React.Component {
   render() {
+    //if viewPostForm is true than display the post form - on close (inside PostForm) it sets viewPostForm back to false
+    let viewPostForm;
+    if (this.props.viewPostForm) {
+      viewPostForm = <PostForm />;
+    }
+
+    //if viewCalendar is true than display the calendar - on close (inside calendar) it sets viewCalendar back to false
+    let viewCalendar;
+    if (this.props.viewCalendar) {
+      viewCalendar = <Calendar />;
+    }
     return (
       <React.Fragment>
         <DashHeader />
         <div className="dashboard-container">
-          <Switch>
-            <Route path="/dashboard/post" component={PostForm} />
-            <Route path="/dashboard/calendar" component={Calendar} />
-          </Switch>
+          {viewCalendar}
+          {viewPostForm}
         </div>
         <DockNav />
       </React.Fragment>
@@ -30,10 +38,9 @@ function mapStateToProps(state, props) {
   console.log('CURRENT STATE:');
   console.log(state);
   return {
-    //TODO: change state based on route clicks above
     loggedIn: state.auth.currentUser !== null,
-    postFormOpen: true,
-    calendarOpen: true
+    viewCalendar: state.dashboard.viewCalendar,
+    viewPostForm: state.dashboard.viewPostForm
   };
 }
 

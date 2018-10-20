@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
-import Draggable, { DraggableCore } from 'react-draggable';
+import Draggable from 'react-draggable';
 
 import { setCurrentPost, deletePost } from '../_actions/post.action';
 

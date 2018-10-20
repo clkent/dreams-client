@@ -121,24 +121,24 @@ nav.dock-nav {
   border-bottom: none;
 }
 
-nav.dock-nav a {
+nav.dock-nav button {
   padding: 10px 20px;
   font-size: 1.7em;
   color: black;
   text-decoration: none;
-  max-width: 50px;
-  max-height: 70px;
+  border: none;
+  background: none;
 }
 
-nav.dock-nav a img {
+nav.dock-nav button img {
   max-width: 50px;
 }
 
-nav.dock-nav a .cal-date {
+nav.dock-nav button .cal-date {
   position: relative;
-  left: 10px;
-  bottom: 44px;
   font-weight: 600;
+  left: 50%;
+  bottom: 10px;
 }
 
 /* post css */
