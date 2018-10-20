@@ -8,6 +8,7 @@
     "react": "^16.5.2",
     "react-big-calendar": "^0.20.1",
     "react-dom": "^16.5.2",
+    "react-draggable": "^3.0.5",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.5",

@@ -15,13 +15,6 @@ body {
   height: 100%;
 }
 
-#root div.main-container {
-  display: grid;
-  grid-template-rows: 60px 1fr 100px;
-  grid-template-columns: 100%;
-  min-height: 100%;
-}
-
 form label {
   font-size: 1em;
   padding: 10px 0;
@@ -70,6 +63,15 @@ form button,
   text-transform: uppercase;
   justify-self: start;
   align-self: center;
+}
+
+/* dashboard css */
+
+#root div.main-container {
+  display: grid;
+  grid-template-rows: 20px 1fr 84px;
+  grid-template-columns: 100%;
+  min-height: 100%;
 }
 
 /* dashboard header css */
@@ -240,9 +242,13 @@ nav.dock-nav a .cal-date {
 }
 
 .view-post div {
-  padding: 20px 15px;
+  padding: 30px;
 }
 
 .view-post span {
   font-style: italic;
+}
+
+.view-post p {
+  line-height: 1.5em;
 }

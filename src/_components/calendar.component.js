@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { fetchPosts, setCurrentPost } from '../_actions/post.action';
 import ViewPost from './postView.component';
 
+import Draggable, { DraggableCore } from 'react-draggable';
+
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 
@@ -36,27 +38,39 @@ class Calendar extends React.Component {
 
     return (
       <React.Fragment>
-        <div className="calendar-container">
-          <button
-            className="close-btn"
-            onClick={() => this.props.dispatch()} //setCurrentPost(null)
-          >
-            <img alt="close button" src={require('../imgs/x.png')} />
-          </button>
-          <div className="calendar">
-            <BigCalendar
-              selectable
-              localizer={localizer}
-              events={this.props.events}
-              startAccessor="start"
-              endAccessor="end"
-              onSelectEvent={post => this.eventClicked(post)}
-              views={['month', 'day']}
-              step={1440}
-              timeslots={1}
-            />
+        <Draggable
+          axis="both"
+          handle=".handle"
+          defaultPosition={{ x: 60, y: 60 }}
+          position={null}
+          grid={[1, 1]}
+          onStart={this.handleStart}
+          onDrag={this.handleDrag}
+          onStop={this.handleStop}
+          bounds="parent"
+        >
+          <div className="calendar-container handle">
+            <button
+              className="close-btn"
+              onClick={() => this.props.dispatch()} //setCurrentPost(null)
+            >
+              <img alt="close button" src={require('../imgs/x.png')} />
+            </button>
+            <div className="calendar">
+              <BigCalendar
+                selectable
+                localizer={localizer}
+                events={this.props.events}
+                startAccessor="start"
+                endAccessor="end"
+                onSelectEvent={post => this.eventClicked(post)}
+                views={['month', 'day']}
+                step={1440}
+                timeslots={1}
+              />
+            </div>
           </div>
-        </div>
+        </Draggable>
         {viewPost}
       </React.Fragment>
     );

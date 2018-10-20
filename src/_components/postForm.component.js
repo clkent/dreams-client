@@ -8,6 +8,8 @@ import {
   // Notifs
 } from 'redux-notifications';
 
+import Draggable from 'react-draggable';
+
 import { submitPostForm } from '../_actions/post.action';
 import '../css/dockNav.css'; //TODO: replace w/ correct css file
 
@@ -43,34 +45,46 @@ export class PostForm extends React.Component {
 
     return (
       //TODO: connect post dispatch
-      <div className="post-container">
-        <button
-          className="close-btn"
-          onClick={() => this.props.dispatch()} //setCurrentPost(null)
-        >
-          <img alt="close button" src={require('../imgs/x.png')} />
-        </button>
-        <form
-          onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
-        >
-          <label>Title</label>
-          <Field
-            name="title"
-            component="input"
-            type="text"
-            placeholder="Title for your dream"
-          />
-          <label>Details</label>
-          <Field
-            name="content"
-            component="textarea"
-            placeholder="What happened in your dream?"
-          />
-          <button type="submit" disabled={pristine || submitting}>
-            Submit
+      <Draggable
+        axis="both"
+        handle=".handle"
+        defaultPosition={{ x: 60, y: 60 }}
+        position={null}
+        grid={[1, 1]}
+        onStart={this.handleStart}
+        onDrag={this.handleDrag}
+        onStop={this.handleStop}
+        bounds="parent"
+      >
+        <div className="post-container handle">
+          <button
+            className="close-btn"
+            onClick={() => this.props.dispatch()} //setCurrentPost(null)
+          >
+            <img alt="close button" src={require('../imgs/x.png')} />
           </button>
-        </form>
-      </div>
+          <form
+            onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
+          >
+            <label>Title</label>
+            <Field
+              name="title"
+              component="input"
+              type="text"
+              placeholder="Title for your dream"
+            />
+            <label>Details</label>
+            <Field
+              name="content"
+              component="textarea"
+              placeholder="What happened in your dream?"
+            />
+            <button type="submit" disabled={pristine || submitting}>
+              Submit
+            </button>
+          </form>
+        </div>
+      </Draggable>
     );
   }
 }
