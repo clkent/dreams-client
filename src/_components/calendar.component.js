@@ -49,13 +49,15 @@ class Calendar extends React.Component {
           onStop={this.handleStop}
           bounds="parent"
         >
-          <div className="calendar-container handle">
-            <button
-              className="close-btn"
-              onClick={() => this.props.dispatch()} //setCurrentPost(null)
-            >
-              <img alt="close button" src={require('../imgs/x.png')} />
-            </button>
+          <div className="calendar-container">
+            <div className="handle">
+              <button
+                className="close-btn"
+                onClick={() => this.props.dispatch()} //setCurrentPost(null)
+              >
+                <img alt="close button" src={require('../imgs/x.png')} />
+              </button>
+            </div>
             <div className="calendar">
               <BigCalendar
                 selectable
