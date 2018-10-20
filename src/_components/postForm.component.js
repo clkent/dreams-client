@@ -42,6 +42,7 @@ export class PostForm extends React.Component {
     const { pristine, submitting } = this.props;
 
     return (
+      //TODO: connect post dispatch
       <div className="post-container">
         <button
           className="close-btn"

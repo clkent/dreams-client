@@ -10,6 +10,11 @@ const DashHeader = props => {
   return (
     <header>
       {/* TODO: settings link */}
+      <img
+        className="moon"
+        alt="moon icon"
+        src={require('../imgs/moon-color.png')}
+      />
       <button
         onClick={() => {
           props.dispatch(clearAuth());

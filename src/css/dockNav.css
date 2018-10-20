@@ -4,7 +4,11 @@
 html,
 body {
   height: 100%;
-  background: #4471e5;
+  background: url('../imgs/bgs/5.jpg') no-repeat center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #root {
@@ -72,7 +76,22 @@ form button,
 
 .main-container header {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  background: rgba(0, 0, 0, 0.2);
+  height: 25px;
+  border-bottom: 1px dotted black;
+}
+.main-container header .moon {
+  width: 20px;
+  height: 20px;
+  padding: 2px 10px 2px 15px;
+}
+
+.main-container header button {
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .close-btn {
@@ -92,11 +111,16 @@ form button,
 nav.dock-nav {
   display: flex;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  border: 2px dotted black;
+  justify-self: center;
+  min-width: 90%;
+  border-radius: 15px 15px 0 0;
+  border-bottom: none;
 }
 
 nav.dock-nav a {
-  padding: 15px;
+  padding: 10px 20px;
   font-size: 1.7em;
   color: black;
   text-decoration: none;
