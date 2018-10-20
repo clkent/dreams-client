@@ -13,7 +13,7 @@ body {
 
 #root div.main-container {
   display: grid;
-  grid-template-rows: 60px 1fr 120px;
+  grid-template-rows: 60px 1fr 100px;
   grid-template-columns: 100%;
   min-height: 100%;
 }
@@ -25,14 +25,47 @@ form label {
 
 form input,
 form textarea {
-  height: 30px;
-  padding: 10px;
+  height: 20px;
+  padding: 9px;
+  margin-bottom: 20px;
   font-size: 0.875em;
-  border: 1px solid #e4e4e4;
+  border: 1.5px solid rgb(0, 0, 0, 0.5);
+  border-radius: 2px;
+}
+
+input:focus,
+textarea:focus,
+button:focus {
+  outline: #ecc241;
 }
 
 form textarea {
   min-height: 200px;
+}
+
+form button,
+.btn {
+  background-color: #4471e5;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1em;
+  padding: 10px 20px;
+  border-radius: 39px;
+  border: none;
+  cursor: pointer;
+  justify-self: end;
+}
+
+.secondary-btn {
+  cursor: pointer;
+  background: none;
+  border-radius: 39px;
+  padding: 10px 15px;
+  margin-left: 10px;
+  border: 1px solid black;
+  text-transform: uppercase;
+  justify-self: start;
+  align-self: center;
 }
 
 /* dashboard header css */
@@ -42,11 +75,24 @@ form textarea {
   flex-direction: row-reverse;
 }
 
+.close-btn {
+  background: none;
+  border: none;
+  max-width: 45px;
+  padding: 0;
+  margin: 15px 0;
+}
+
+.close-btn img {
+  width: 26px;
+  cursor: pointer;
+}
+
 /* dock nav css */
 nav.dock-nav {
   display: flex;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 nav.dock-nav a {
@@ -71,9 +117,9 @@ nav.dock-nav a .cal-date {
 
 /* post css */
 
-.small-browser {
-  max-width: 400px;
-  min-height: 600px;
+.post-container {
+  max-width: 365px;
+  min-height: 571px;
   background: url('../imgs/small-browser.png') no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -81,9 +127,98 @@ nav.dock-nav a .cal-date {
   background-size: cover;
 }
 
-.small-browser form {
-  padding: 80px 30px 20px 30px;
-  max-width: 303px;
-  display: flex;
-  flex-direction: column;
+.post-container form {
+  padding: 30px 30px 20px 30px;
+  max-width: 287px;
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.post-container .close-btn {
+  margin-left: 10px;
+}
+
+/* calendar css */
+
+.calendar-container {
+  max-width: 815px;
+  min-height: 548px;
+  background: url('../imgs/large-browser.png') no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.calendar-container .close-btn {
+  margin-left: 15px;
+}
+
+.calendar {
+  height: 490px;
+  max-width: 816px;
+}
+
+.calendar .rbc-calendar {
+  max-width: 800px;
+  padding: 30px 30px 46px 24px;
+}
+
+.calendar .rbc-event {
+  padding: 4px 8px;
+  background-color: #15d7bb;
+  border-radius: 100px;
+}
+
+.calendar .rbc-show-more {
+  padding: 8px;
+  font-size: 65%;
+}
+.calendar .rbc-time-content,
+.calendar .rbc-time-header-gutter {
+  display: none;
+}
+.calendar .rbc-time-view {
+  overflow: scroll;
+  border: none;
+}
+.calendar .rbc-time-header-content {
+  border: none;
+}
+.calendar .rbc-time-view .rbc-event {
+  min-height: 40px;
+}
+
+.calendar .rbc-time-view .rbc-row {
+  background-color: #fff;
+}
+
+/* view post css */
+
+.view-post-container {
+  max-width: 815px;
+  min-height: 548px;
+  background: url('../imgs/large-browser.png') no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.view-post {
+  max-width: 775px;
+  padding: 0px 30px 30px 10px;
+  min-height: 520px;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 50px 1fr 48px;
+  overflow: scroll;
+}
+
+.view-post div {
+  padding: 20px 15px;
+}
+
+.view-post span {
+  font-style: italic;
 }

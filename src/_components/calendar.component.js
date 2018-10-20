@@ -6,6 +6,9 @@ import ViewPost from './postView.component';
 
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
+
+//TODO: swap out when css is in correct folder
+import '../css/dockNav.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 // Setup the localizer by providing the moment Object to the correct localizer.
@@ -13,9 +16,6 @@ const localizer = BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 class Calendar extends React.Component {
   componentDidMount() {
-    if (this.props.calendarToggle) {
-      console.log(this.props.calendarToggle);
-    }
     this.props.dispatch(fetchPosts());
   }
 
@@ -25,14 +25,6 @@ class Calendar extends React.Component {
   }
 
   render() {
-    //TODO: remove styles here and move to css
-    const style = {
-      width: '800px',
-      height: '400px',
-      background: 'grey',
-      border: '1px solid black'
-    };
-
     //TODO: make day view the only view available for mobile
     //.rbc-timeslot-group & .rbc-label & .rbc-current-time-indicator display:none;
 
@@ -43,20 +35,30 @@ class Calendar extends React.Component {
     }
 
     return (
-      <div style={style}>
-        <BigCalendar
-          selectable
-          localizer={localizer}
-          events={this.props.events}
-          startAccessor="start"
-          endAccessor="end"
-          onSelectEvent={post => this.eventClicked(post)}
-          views={['month', 'day']}
-          step={1440}
-          timeslots={1}
-        />
+      <React.Fragment>
+        <div className="calendar-container">
+          <button
+            className="close-btn"
+            onClick={() => this.props.dispatch()} //setCurrentPost(null)
+          >
+            <img alt="close button" src={require('../imgs/x.png')} />
+          </button>
+          <div className="calendar">
+            <BigCalendar
+              selectable
+              localizer={localizer}
+              events={this.props.events}
+              startAccessor="start"
+              endAccessor="end"
+              onSelectEvent={post => this.eventClicked(post)}
+              views={['month', 'day']}
+              step={1440}
+              timeslots={1}
+            />
+          </div>
+        </div>
         {viewPost}
-      </div>
+      </React.Fragment>
     );
   }
 }

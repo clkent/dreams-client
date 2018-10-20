@@ -4,33 +4,35 @@ import moment from 'moment';
 
 import { setCurrentPost, deletePost } from '../_actions/post.action';
 
+//TODO: swap out when css is in correct folder
+import '../css/dockNav.css';
 class ViewPost extends React.Component {
   render() {
-    //TODO: remove styling here
-    const style = {
-      width: '800px',
-      height: '400px',
-      background: 'grey',
-      border: '1px solid black'
-    };
-
     //setting up post variable to use in my return
     const { post } = this.props;
 
     return (
-      <div style={style}>
-        {/* on click change my postId to null - this removes the post from view */}
-        <button onClick={() => this.props.dispatch(setCurrentPost(null))}>
-          Close
-        </button>
-        <div>
-          <span>{moment(post.createdAt).format('MMM Do YYYY')}</span>
-          <h1>{post.title}</h1>
-          <p>{post.content}</p>
+      <div className="view-post-container">
+        <div class="view-post">
+          {/* on click change my postId to null - this removes the post from view */}
+          <button
+            className="close-btn"
+            onClick={() => this.props.dispatch(setCurrentPost(null))}
+          >
+            <img alt="close button" src={require('../imgs/x.png')} />
+          </button>
+          <div>
+            <span>{moment(post.createdAt).format('MMM Do YYYY')}</span>
+            <h1>{post.title}</h1>
+            <p>{post.content}</p>
+          </div>
+          <button
+            className="secondary-btn"
+            onClick={() => this.props.dispatch(deletePost(post.id))}
+          >
+            Delete
+          </button>
         </div>
-        <button onClick={() => this.props.dispatch(deletePost(post.id))}>
-          Delete
-        </button>
       </div>
     );
   }

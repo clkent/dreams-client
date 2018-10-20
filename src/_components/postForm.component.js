@@ -42,7 +42,13 @@ export class PostForm extends React.Component {
     const { pristine, submitting } = this.props;
 
     return (
-      <div className="small-browser">
+      <div className="post-container">
+        <button
+          className="close-btn"
+          onClick={() => this.props.dispatch()} //setCurrentPost(null)
+        >
+          <img alt="close button" src={require('../imgs/x.png')} />
+        </button>
         <form
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
         >
@@ -53,14 +59,12 @@ export class PostForm extends React.Component {
             type="text"
             placeholder="Title for your dream"
           />
-          <br />
           <label>Details</label>
           <Field
             name="content"
             component="textarea"
             placeholder="What happened in your dream?"
           />
-          <br />
           <button type="submit" disabled={pristine || submitting}>
             Submit
           </button>
