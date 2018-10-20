@@ -56,13 +56,15 @@ export class PostForm extends React.Component {
         onStop={this.handleStop}
         bounds="parent"
       >
-        <div className="post-container handle">
-          <button
-            className="close-btn"
-            onClick={() => this.props.dispatch()} //setCurrentPost(null)
-          >
-            <img alt="close button" src={require('../imgs/x.png')} />
-          </button>
+        <div className="post-container">
+          <div className="handle">
+            <button
+              className="close-btn"
+              onClick={() => this.props.dispatch()} //setCurrentPost(null)
+            >
+              <img alt="close button" src={require('../imgs/x.png')} />
+            </button>
+          </div>
           <form
             onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
           >

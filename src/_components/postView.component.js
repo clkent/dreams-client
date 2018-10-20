@@ -25,16 +25,18 @@ class ViewPost extends React.Component {
         onStop={this.handleStop}
         bounds="parent"
       >
-        <div className="view-post-container handle">
+        <div className="view-post-container">
           <div className="view-post">
             {/* on click change my postId to null - this removes the post from view */}
-            <button
-              className="close-btn"
-              onClick={() => this.props.dispatch(setCurrentPost(null))}
-            >
-              <img alt="close button" src={require('../imgs/x.png')} />
-            </button>
-            <div>
+            <div className="handle">
+              <button
+                className="close-btn"
+                onClick={() => this.props.dispatch(setCurrentPost(null))}
+              >
+                <img alt="close button" src={require('../imgs/x.png')} />
+              </button>
+            </div>
+            <div className="content">
               <span>{moment(post.createdAt).format('MMM Do YYYY')}</span>
               <h1>{post.title}</h1>
               <p>{post.content}</p>

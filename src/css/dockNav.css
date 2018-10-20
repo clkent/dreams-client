@@ -177,7 +177,7 @@ nav.dock-nav a .cal-date {
 }
 
 .calendar-container .close-btn {
-  margin-left: 15px;
+  margin-left: 20px;
 }
 
 .calendar {
@@ -240,8 +240,11 @@ nav.dock-nav a .cal-date {
   grid-template-rows: 50px 1fr 48px;
   overflow: scroll;
 }
-
 .view-post div {
+  padding: 0px 10px;
+}
+
+.view-post div.content {
   padding: 30px;
 }
 
