@@ -3,16 +3,18 @@ import { connect } from 'react-redux';
 
 import { fetchPosts, setCurrentPost } from '../_actions/post.action';
 import ViewPost from './postView.component';
+import { viewCalendar } from '../_actions/dashboard.action';
 
 import Draggable from 'react-draggable';
 
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 
+import Media from 'react-media';
+
 //TODO: swap out when css is in correct folder
 import '../css/dockNav.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { viewCalendar } from '../_actions/dashboard.action';
 
 // Setup the localizer by providing the moment Object to the correct localizer.
 const localizer = BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
@@ -27,6 +29,12 @@ class Calendar extends React.Component {
     this.props.dispatch(setCurrentPost(post.id));
   }
 
+  // componentDidUpdate() {
+  //   //FIXME: delete if I don't need it
+  //   this.props.viewCalendar ? this.props.dispatch(formPosition(-300)) : this.props.dispatch(formPosition(60)) ;
+  
+  // }
+
   render() {
     //TODO: make day view the only view available for mobile
 
@@ -36,42 +44,74 @@ class Calendar extends React.Component {
       viewPost = <ViewPost />;
     }
 
+
     return (
       <React.Fragment>
-        <Draggable
-          axis="both"
-          handle=".handle"
-          defaultPosition={{ x: 60, y: 60 }}
-          position={null}
-          grid={[1, 1]}
-          onStart={this.handleStart}
-          onDrag={this.handleDrag}
-          onStop={this.handleStop}
-          bounds="parent"
-        >
-          <div className="calendar-container">
-            <div className="handle">
-              <button
-                className="close-btn"
-                onClick={() => this.props.dispatch(viewCalendar(false))}
+        {/* render appropriate content based on media query */}
+        <Media query="(max-width: 1024px)">
+          {matches =>
+            matches ? (
+              <div className="calendar-container small">
+                <div className="handle">
+                  <button
+                    className="close-btn"
+                    onClick={() => this.props.dispatch(viewCalendar(false))}
+                  >
+                    <img alt="close button" src={require('../imgs/x.png')} />
+                  </button>
+                </div>
+                <div className="calendar">
+                  <BigCalendar
+                    localizer={localizer}
+                    events={this.props.events}
+                    startAccessor="start"
+                    endAccessor="end"
+                    onSelectEvent={post => this.eventClicked(post)}
+                    view="day"
+                    views={['day']}
+                    step={1440}
+                    timeslots={1}
+                  />
+                </div>
+              </div>
+            ) : (
+              <Draggable
+                axis="both"
+                handle=".handle"
+                defaultPosition={{ x: 0, y: 0 }}
+                position={null}
+                grid={[1, 1]}
+                onStart={this.handleStart}
+                onDrag={this.handleDrag}
+                onStop={this.handleStop}
+                bounds="parent"
               >
-                <img alt="close button" src={require('../imgs/x.png')} />
-              </button>
-            </div>
-            <div className="calendar">
-              <BigCalendar
-                localizer={localizer}
-                events={this.props.events}
-                startAccessor="start"
-                endAccessor="end"
-                onSelectEvent={post => this.eventClicked(post)}
-                views={['month', 'day']}
-                step={1440}
-                timeslots={1}
-              />
-            </div>
-          </div>
-        </Draggable>
+                <div className="calendar-container">
+                  <div className="handle">
+                    <button
+                      className="close-btn"
+                      onClick={() => this.props.dispatch(viewCalendar(false))}
+                    >
+                      <img alt="close button" src={require('../imgs/x.png')} />
+                    </button>
+                  </div>
+                  <div className="calendar">
+                    <BigCalendar
+                      localizer={localizer}
+                      events={this.props.events}
+                      startAccessor="start"
+                      endAccessor="end"
+                      onSelectEvent={post => this.eventClicked(post)}
+                      views={['month', 'day']}
+                      step={1440}
+                      timeslots={1}
+                    />
+                  </div>
+                </div>
+              </Draggable>
+            )
+          }
+        </Media>
         {viewPost}
       </React.Fragment>
     );
@@ -91,7 +131,9 @@ const mapStateToProps = state => {
   });
   return {
     events: posts,
-    postId: state.post.postId
+    postId: state.post.postId,
+    viewCalendar: state.dashboard.viewCalendar,
+    formPosition: state.dashboard.formPosition
   };
 };
 

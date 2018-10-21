@@ -5,7 +5,6 @@ import { viewCalendar, viewPostForm } from '../_actions/dashboard.action';
 import '../css/dockNav.css';
 
 const DockNav = props => {
-  console.log(props);
   return (
     <nav className="dock-nav">
       <button onClick={() => props.dispatch(viewPostForm(!props.viewPostForm))}>

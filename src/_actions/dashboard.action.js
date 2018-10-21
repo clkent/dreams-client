@@ -13,3 +13,11 @@ export const viewPostForm = viewPostForm => {
     viewPostForm
   };
 };
+
+export const FORM_POSITION = 'FORM_POSITION';
+export const formPosition = formPosition => {
+  return {
+    type: FORM_POSITION,
+    formPosition
+  };
+};

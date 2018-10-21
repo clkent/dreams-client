@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 // import Draggable from './draggable.component';
 import { Field, reduxForm, focus } from 'redux-form';
 
@@ -10,11 +12,14 @@ import {
 
 import Draggable from 'react-draggable';
 
+import Media from 'react-media';
+
 import { submitPostForm } from '../_actions/post.action';
 import '../css/dockNav.css'; //TODO: replace w/ correct css file
-import { viewPostForm } from '../_actions/dashboard.action';
+import { viewPostForm, formPosition } from '../_actions/dashboard.action';
 
 export class PostForm extends React.Component {
+
   //on submit of my form I dispatch my submitPostForm from my post.action
   onSubmit(values) {
     const { title, content } = values;
@@ -34,71 +39,123 @@ export class PostForm extends React.Component {
       })
     );
   }
+
   componentDidUpdate() {
     if (this.props.submitSucceeded) {
       return this.send();
     }
+    this.props.viewCalendar ? this.props.dispatch(formPosition(-300)) : this.props.dispatch(formPosition(60));
+
+
   }
+
+reRender() {
+    this.forceUpdate() 
+}
 
   render() {
     //set up pristine and submitting to use in my return
     const { pristine, submitting } = this.props;
-
+    console.log(this.props.formPosition);
     return (
-      //TODO: connect post dispatch
-      <Draggable
-        axis="both"
-        handle=".handle"
-        defaultPosition={{ x: 640, y: -260 }}
-        position={null}
-        grid={[1, 1]}
-        onStart={this.handleStart}
-        onDrag={this.handleDrag}
-        onStop={this.handleStop}
-        bounds="parent"
-      >
-        <div className="post-container">
-          <div className="handle">
-            <button
-              className="close-btn"
-              onClick={() => this.props.dispatch(viewPostForm(false))}
-            >
-              <img alt="close button" src={require('../imgs/x.png')} />
-            </button>
-          </div>
-          <form
-            onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
-          >
-            <label>Title</label>
-            <Field
-              name="title"
-              component="input"
-              type="text"
-              placeholder="Title for your dream"
-            />
-            <label>Details</label>
-            <Field
-              name="content"
-              component="textarea"
-              placeholder="What happened in your dream?"
-            />
-            <button type="submit" disabled={pristine || submitting}>
-              Submit
-            </button>
-          </form>
-        </div>
-      </Draggable>
+      <React.Fragment>
+        <Media query="(max-width: 1024px)">
+          {matches =>
+            matches ? (
+              <div className="post-container small">
+                <div className="handle">
+                  <button
+                    className="close-btn"
+                    onClick={() => this.props.dispatch(viewPostForm(false))}
+                  >
+                    <img alt="close button" src={require('../imgs/x.png')} />
+                  </button>
+                </div>
+                <form
+                  onSubmit={this.props.handleSubmit(values =>
+                    this.onSubmit(values)
+                  )}
+                >
+                  <label>Title</label>
+                  <Field
+                    name="title"
+                    component="input"
+                    type="text"
+                    placeholder="Title for your dream"
+                  />
+                  <label>Details</label>
+                  <Field
+                    name="content"
+                    component="textarea"
+                    placeholder="What happened in your dream?"
+                  />
+                  <button type="submit" disabled={pristine || submitting}>
+                    Submit
+                  </button>
+                </form>
+              </div>
+            ) : (
+              <Draggable
+                axis="both"
+                handle=".handle"
+                defaultPosition={{ x: 640, y: this.props.formPosition }}
+                position={null}
+                grid={[1, 1]}
+                onStart={this.handleStart}
+                onDrag={this.handleDrag}
+                onStop={this.handleStop}
+                bounds="parent"
+              >
+                <div className="post-container">
+                  <div className="handle">
+                    <button
+                      className="close-btn"
+                      onClick={() => this.props.dispatch(viewPostForm(false))}
+                    >
+                      <img alt="close button" src={require('../imgs/x.png')} />
+                    </button>
+                  </div>
+                  <form
+                    onSubmit={this.props.handleSubmit(values =>
+                      this.onSubmit(values)
+                    )}
+                  >
+                    <label>Title</label>
+                    <Field
+                      name="title"
+                      component="input"
+                      type="text"
+                      placeholder="Title for your dream"
+                    />
+                    <label>Details</label>
+                    <Field
+                      name="content"
+                      component="textarea"
+                      placeholder="What happened in your dream?"
+                    />
+                    <button type="submit" disabled={pristine || submitting}>
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              </Draggable>
+            )
+          }
+        </Media>
+      </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    submitSucceeded: state.submitSucceeded
+    submitSucceeded: state.submitSucceeded,
+    viewCalendar: state.dashboard.viewCalendar,
+    formPosition: state.dashboard.formPosition
   };
 };
 
-export default reduxForm(
+PostForm = reduxForm(
   {
     form: 'post',
     onSubmitFail: (errors, dispatch) =>
@@ -106,3 +163,5 @@ export default reduxForm(
   },
   mapStateToProps
 )(PostForm);
+
+export default connect(mapStateToProps)(PostForm);

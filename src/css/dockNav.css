@@ -4,7 +4,7 @@
 html,
 body {
   height: 100%;
-  background: url('../imgs/bgs/5.jpg') no-repeat center fixed;
+  background: url('../imgs/bgs/clouds.gif') no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -28,12 +28,7 @@ form textarea {
   font-size: 0.875em;
   border: 1.5px solid rgb(0, 0, 0, 0.5);
   border-radius: 2px;
-}
-
-input:focus,
-textarea:focus,
-button:focus {
-  outline: #ecc241;
+  cursor: pointer;
 }
 
 form textarea {
@@ -72,6 +67,10 @@ form button,
   grid-template-rows: 20px 1fr 84px;
   grid-template-columns: 100%;
   min-height: 100%;
+}
+
+.dashboard-container {
+  padding: 60px;
 }
 
 /* dashboard header css */
@@ -128,6 +127,7 @@ nav.dock-nav button {
   text-decoration: none;
   border: none;
   background: none;
+  cursor: pointer;
 }
 
 nav.dock-nav button img {

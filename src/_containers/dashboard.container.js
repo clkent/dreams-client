@@ -8,6 +8,8 @@ import Calendar from '../_components/calendar.component';
 
 import DockNav from '../_components/dockNav.component';
 
+import Media from 'react-media';
+
 class Dashboard extends React.Component {
   render() {
     //if viewPostForm is true than display the post form - on close (inside PostForm) it sets viewPostForm back to false
@@ -25,8 +27,21 @@ class Dashboard extends React.Component {
       <React.Fragment>
         <DashHeader />
         <div className="dashboard-container">
-          {viewCalendar}
-          {viewPostForm}
+          <Media query="(max-width: 1024px)">
+            {matches =>
+              matches ? (
+                <React.Fragment>
+                  {viewPostForm}
+                  {viewCalendar}
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  {viewCalendar}
+                  {viewPostForm}
+                </React.Fragment>
+              )
+            }
+          </Media>
         </div>
         <DockNav />
       </React.Fragment>
