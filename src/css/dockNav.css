@@ -4,15 +4,18 @@
 html,
 body {
   height: 100%;
-  background: url('../imgs/bgs/2.jpg') no-repeat center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background: #fff;
 }
 
 #root {
   height: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Fredoka One', serif;
+  letter-spacing: 1px;
 }
 
 form label {
@@ -47,6 +50,7 @@ form button,
   border: none;
   cursor: pointer;
   justify-self: end;
+  font-family: 'Fredoka One', serif;
 }
 
 .secondary-btn {
@@ -61,11 +65,62 @@ form button,
   align-self: center;
 }
 
+/*Marketing Page css */
+
+.main-container .home header {
+  background: none;
+  padding: 2%;
+}
+
+.logo {
+  width: 150px;
+}
+.wrap {
+  padding: 0 5%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+@keyframes comeIn {
+  0% {
+    letter-spacing: 4em;
+    transform: scale(4);
+    text-align: center;
+  }
+  35% {
+    transform: scale(3);
+    text-align: center;
+  }
+
+  65% {
+    transform: scale(2);
+    text-align: center;
+  }
+  100% {
+    letter-spacing: 8px;
+    text-align: left;
+  }
+}
+
+.wrap h1 {
+  font-size: 6em;
+  background-image: url('../imgs/bgs/clouds.gif');
+  background-size: cover;
+  color: transparent;
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  /* animation: 5s ease 0s 1 comeIn; */
+  text-transform: uppercase;
+  line-height: 1.25em;
+  letter-spacing: 8px;
+  /* -webkit-text-stroke: 1px black; */
+}
+
 /* dashboard css */
 
 #root div.main-container {
   display: grid;
-  grid-template-rows: 20px 1fr 84px;
+  grid-template-rows: 20px 1fr 130px;
   grid-template-columns: 100%;
   min-height: 100%;
 }
@@ -93,9 +148,10 @@ form button,
 .main-container header {
   display: flex;
   flex-direction: row;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(225, 225, 225, 0.2);
   height: 25px;
-  border-bottom: 1px dotted black;
+  border-bottom: 1px solid #cccccc;
+  /* border-bottom: 1px dotted black; */
 }
 .main-container header .moon {
   width: 20px;
@@ -127,12 +183,10 @@ form button,
 nav.dock-nav {
   display: flex;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.2);
-  border: 2px dotted black;
+  background: url('../imgs/shelf.png') no-repeat bottom center;
   justify-self: center;
-  min-width: 90%;
-  border-radius: 15px 15px 0 0;
-  border-bottom: none;
+  min-width: 70%;
+  margin-bottom: 25px;
 }
 
 nav.dock-nav button {
@@ -143,6 +197,12 @@ nav.dock-nav button {
   border: none;
   background: none;
   cursor: pointer;
+}
+
+nav.dock-nav button:hover {
+  -webkit-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  transform: scale(1.15);
 }
 
 nav.dock-nav button img {

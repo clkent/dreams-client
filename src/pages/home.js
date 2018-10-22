@@ -8,12 +8,16 @@ export function Home(props) {
     return <Redirect to="/dashboard" />;
   }
   return (
-    <React.Fragment>
+    <div className="home">
       <Header />
-      <h1>Home Page</h1>
-      <p>you should really sign up now.</p>
-      <Link to="/signup">Sign Up</Link>
-    </React.Fragment>
+      <main class="wrap">
+        <h1 className="underlined underlined--gradient">
+          Dreams are the portal to your unconscious mind
+        </h1>
+        <p>you should really sign up now.</p>
+        <Link to="/signup">Sign Up</Link>
+      </main>
+    </div>
   );
 }
 

@@ -4,7 +4,11 @@ import { NavLink } from 'react-router-dom';
 const Header = () => (
   <header>
     <NavLink to="/" activeClassName="is-active" exact={true}>
-      Home
+      <img
+        className="logo"
+        alt="Dream logo"
+        src={require('../imgs/logo.png')}
+      />
     </NavLink>
     <NavLink to="/signup" activeClassName="is-active">
       Sign Up
