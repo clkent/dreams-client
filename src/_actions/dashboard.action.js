@@ -14,10 +14,18 @@ export const viewPostForm = viewPostForm => {
   };
 };
 
-export const FORM_POSITION = 'FORM_POSITION';
-export const formPosition = formPosition => {
+export const RE_RENDER = 'RE_RENDER';
+export const reRender = reRender => {
   return {
-    type: FORM_POSITION,
-    formPosition
+    type: RE_RENDER,
+    reRender
   };
 };
+
+// export const FORM_POSITION = 'FORM_POSITION';
+// export const formPosition = formPosition => {
+//   return {
+//     type: FORM_POSITION,
+//     formPosition
+//   };
+// };

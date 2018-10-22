@@ -4,7 +4,7 @@
 html,
 body {
   height: 100%;
-  background: url('../imgs/bgs/clouds.gif') no-repeat center fixed;
+  background: url('../imgs/bgs/2.jpg') no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -70,7 +70,7 @@ form button,
 }
 
 .dashboard-container {
-  padding: 60px;
+  padding: 20px;
 }
 
 /* dashboard header css */
@@ -167,9 +167,9 @@ nav.dock-nav button .cal-date {
 /* calendar css */
 
 .calendar-container {
-  max-width: 815px;
-  min-height: 548px;
-  background: url('../imgs/large-browser.png') no-repeat center center;
+  max-width: 365px;
+  min-height: 571px;
+  background: url('../imgs/small-browser.png') no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -181,13 +181,16 @@ nav.dock-nav button .cal-date {
 }
 
 .calendar {
-  height: 490px;
-  max-width: 816px;
+  height: 480px;
 }
 
 .calendar .rbc-calendar {
-  max-width: 800px;
+  max-width: 775px;
   padding: 30px 30px 46px 24px;
+}
+.calendar .rbc-toolbar-label {
+  font-size: 0.75em;
+  font-weight: 600;
 }
 
 .calendar .rbc-event {
@@ -219,26 +222,46 @@ nav.dock-nav button .cal-date {
   background-color: #fff;
 }
 
+@media only screen and (min-width: 1024px) {
+  .calendar-container {
+    max-width: 790px;
+    min-height: 545px;
+    background: url('../imgs/large-browser.png') no-repeat center center;
+  }
+  .calendar .rbc-toolbar-label {
+    font-size: 1em;
+  }
+}
+
 /* view post css */
 
 .view-post-container {
-  max-width: 815px;
-  min-height: 548px;
-  background: url('../imgs/large-browser.png') no-repeat center center;
+  max-width: 365px;
+  min-height: 571px;
+  background: url('../imgs/small-browser.png') no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
+@media only screen and (min-width: 1024px) {
+  .view-post-container {
+    max-width: 796px;
+    min-height: 548px;
+    background: url('../imgs/large-browser.png') no-repeat center center;
+  }
+
+  .view-post {
+    min-height: 493px;
+  }
+}
+
 .view-post {
-  max-width: 775px;
-  padding: 0px 30px 30px 10px;
-  min-height: 520px;
-  height: 100%;
+  padding: 6px 30px 30px 10px;
+  max-height: 520px;
   display: grid;
   grid-template-rows: 50px 1fr 48px;
-  overflow: scroll;
 }
 .view-post div {
   padding: 0px 10px;
@@ -246,6 +269,7 @@ nav.dock-nav button .cal-date {
 
 .view-post div.content {
   padding: 30px;
+  overflow: scroll;
 }
 
 .view-post span {

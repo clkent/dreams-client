@@ -1,13 +1,13 @@
 import {
   VIEW_CALENDAR,
   VIEW_POST_FORM,
-  FORM_POSITION
+  RE_RENDER
 } from '../_actions/dashboard.action';
 
 const initialState = {
   viewCalendar: true,
   viewPostForm: true,
-  formPosition: -300
+  reRender: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -20,10 +20,14 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         viewPostForm: action.viewPostForm
       });
-    case FORM_POSITION:
+    case RE_RENDER:
       return Object.assign({}, state, {
-        formPosition: action.formPosition
+        reRender: action.reRender
       });
+    // case FORM_POSITION:
+    //   return Object.assign({}, state, {
+    //     formPosition: action.formPosition
+    //   });
     default:
       return state;
   }

@@ -47,7 +47,7 @@ class ViewPost extends React.Component {
               <Draggable
                 axis="both"
                 handle=".handle"
-                defaultPosition={{ x: 140, y: -390 }}
+                defaultPosition={{ x: 0, y: 0 }}
                 position={null}
                 grid={[1, 1]}
                 onStart={this.handleStart}

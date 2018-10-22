@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { fetchPosts, setCurrentPost } from '../_actions/post.action';
 import ViewPost from './postView.component';
-import { viewCalendar } from '../_actions/dashboard.action';
+import { viewCalendar, reRender } from '../_actions/dashboard.action';
 
 import Draggable from 'react-draggable';
 
@@ -29,11 +29,12 @@ class Calendar extends React.Component {
     this.props.dispatch(setCurrentPost(post.id));
   }
 
-  // componentDidUpdate() {
-  //   //FIXME: delete if I don't need it
-  //   this.props.viewCalendar ? this.props.dispatch(formPosition(-300)) : this.props.dispatch(formPosition(60)) ;
-  
-  // }
+  componentDidUpdate() {
+    if (this.props.reRender) {
+      this.props.dispatch(fetchPosts());
+      this.props.dispatch(reRender(false));
+    }
+  }
 
   render() {
     //TODO: make day view the only view available for mobile
@@ -43,7 +44,6 @@ class Calendar extends React.Component {
     if (this.props.postId) {
       viewPost = <ViewPost />;
     }
-
 
     return (
       <React.Fragment>
@@ -55,7 +55,7 @@ class Calendar extends React.Component {
                 <div className="handle">
                   <button
                     className="close-btn"
-                    onClick={() => this.props.dispatch(viewCalendar(false))}
+                    onClick={() => this.props.dispatch(viewCalendar(false))} //this.props.dispatch(viewCalendar(false))
                   >
                     <img alt="close button" src={require('../imgs/x.png')} />
                   </button>
@@ -133,7 +133,7 @@ const mapStateToProps = state => {
     events: posts,
     postId: state.post.postId,
     viewCalendar: state.dashboard.viewCalendar,
-    formPosition: state.dashboard.formPosition
+    reRender: state.dashboard.reRender
   };
 };
 

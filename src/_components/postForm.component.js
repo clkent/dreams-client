@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // import Draggable from './draggable.component';
-import { Field, reduxForm, focus } from 'redux-form';
+import { Field, reduxForm, focus, reset } from 'redux-form';
 
 import {
   // reducer as notifReducer,
@@ -14,12 +14,12 @@ import Draggable from 'react-draggable';
 
 import Media from 'react-media';
 
+import { reRender } from '../_actions/dashboard.action';
 import { submitPostForm } from '../_actions/post.action';
 import '../css/dockNav.css'; //TODO: replace w/ correct css file
-import { viewPostForm, formPosition } from '../_actions/dashboard.action';
+import { viewPostForm } from '../_actions/dashboard.action';
 
 export class PostForm extends React.Component {
-
   //on submit of my form I dispatch my submitPostForm from my post.action
   onSubmit(values) {
     const { title, content } = values;
@@ -38,25 +38,21 @@ export class PostForm extends React.Component {
         dismissAfter: 4000
       })
     );
+
+    this.props.dispatch(reRender(true));
+    this.props.dispatch(reset('post'));
   }
 
   componentDidUpdate() {
     if (this.props.submitSucceeded) {
       return this.send();
     }
-    this.props.viewCalendar ? this.props.dispatch(formPosition(-300)) : this.props.dispatch(formPosition(60));
-
-
   }
-
-reRender() {
-    this.forceUpdate() 
-}
 
   render() {
     //set up pristine and submitting to use in my return
     const { pristine, submitting } = this.props;
-    console.log(this.props.formPosition);
+
     return (
       <React.Fragment>
         <Media query="(max-width: 1024px)">
@@ -98,7 +94,7 @@ reRender() {
               <Draggable
                 axis="both"
                 handle=".handle"
-                defaultPosition={{ x: 640, y: this.props.formPosition }}
+                defaultPosition={{ x: 0, y: 0 }}
                 position={null}
                 grid={[1, 1]}
                 onStart={this.handleStart}
@@ -150,8 +146,7 @@ reRender() {
 const mapStateToProps = state => {
   return {
     submitSucceeded: state.submitSucceeded,
-    viewCalendar: state.dashboard.viewCalendar,
-    formPosition: state.dashboard.formPosition
+    viewCalendar: state.dashboard.viewCalendar
   };
 };
 
