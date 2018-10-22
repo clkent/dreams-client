@@ -59,6 +59,7 @@ class Calendar extends React.Component {
                   >
                     <img alt="close button" src={require('../imgs/x.png')} />
                   </button>
+                  <h3>Calendar</h3>
                 </div>
                 <div className="calendar">
                   <BigCalendar
@@ -94,6 +95,7 @@ class Calendar extends React.Component {
                     >
                       <img alt="close button" src={require('../imgs/x.png')} />
                     </button>
+                    <h3>Calendar</h3>
                   </div>
                   <div className="calendar">
                     <BigCalendar

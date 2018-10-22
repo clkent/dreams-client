@@ -29,6 +29,7 @@ class ViewPost extends React.Component {
                     >
                       <img alt="close button" src={require('../imgs/x.png')} />
                     </button>
+                    <h3>Dream</h3>
                   </div>
                   <div className="content">
                     <span>{moment(post.createdAt).format('MMM Do YYYY')}</span>
@@ -70,6 +71,7 @@ class ViewPost extends React.Component {
                           src={require('../imgs/x.png')}
                         />
                       </button>
+                      <h3>Dream</h3>
                     </div>
                     <div className="content">
                       <span>

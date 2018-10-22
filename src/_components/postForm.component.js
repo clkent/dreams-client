@@ -14,6 +14,8 @@ import Draggable from 'react-draggable';
 
 import Media from 'react-media';
 
+import moment from 'moment';
+
 import { reRender } from '../_actions/dashboard.action';
 import { submitPostForm } from '../_actions/post.action';
 import '../css/dockNav.css'; //TODO: replace w/ correct css file
@@ -66,6 +68,7 @@ export class PostForm extends React.Component {
                   >
                     <img alt="close button" src={require('../imgs/x.png')} />
                   </button>
+                  <h3>{moment(Date.now()).format('MMM Do YY')}</h3>
                 </div>
                 <form
                   onSubmit={this.props.handleSubmit(values =>
@@ -79,11 +82,11 @@ export class PostForm extends React.Component {
                     type="text"
                     placeholder="Title for your dream"
                   />
-                  <label>Details</label>
+                  <label>What did you dream about?</label>
                   <Field
                     name="content"
                     component="textarea"
-                    placeholder="What happened in your dream?"
+                    placeholder="Try and remember all of the little details..."
                   />
                   <button type="submit" disabled={pristine || submitting}>
                     Submit
@@ -110,6 +113,7 @@ export class PostForm extends React.Component {
                     >
                       <img alt="close button" src={require('../imgs/x.png')} />
                     </button>
+                    <h3>{moment(Date.now()).format('MMM Do YY')}</h3>
                   </div>
                   <form
                     onSubmit={this.props.handleSubmit(values =>
@@ -123,11 +127,11 @@ export class PostForm extends React.Component {
                       type="text"
                       placeholder="Title for your dream"
                     />
-                    <label>Details</label>
+                    <label>What did you dream about?</label>
                     <Field
                       name="content"
                       component="textarea"
-                      placeholder="What happened in your dream?"
+                      placeholder="Try and remember all of the little details..."
                     />
                     <button type="submit" disabled={pristine || submitting}>
                       Submit
