@@ -3,12 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 const Header = () => (
   <header>
-    <NavLink to="/" activeClassName="is-active" exact={true}>
-      <img
-        className="logo"
-        alt="Dream logo"
-        src={require('../imgs/logo.png')}
-      />
+    <NavLink to="/" className="logo" activeClassName="is-active" exact={true}>
+      Dream Recall
     </NavLink>
     <NavLink to="/signup" activeClassName="is-active">
       Sign Up

@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
       viewCalendar = <Calendar />;
     }
     return (
-      <React.Fragment>
+      <div className="dashboard">
         <DashHeader />
         <div className="dashboard-container">
           <Media query="(max-width: 1024px)">
@@ -44,7 +44,7 @@ class Dashboard extends React.Component {
           </Media>
         </div>
         <DockNav />
-      </React.Fragment>
+      </div>
     );
   }
 }
