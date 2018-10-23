@@ -23,53 +23,88 @@ export function Home(props) {
       </section>
       <section className="body">
         <div className="overview">
-          <p>Sup</p>
-        </div>
-        <div className="left-text">
           <div>
-            <h2>Post</h2>
+            <h2>Paper and pen work great and all but...</h2>
             <p>
-              Lorem ipsum dolor sit amet, justo ac massa consequat ac lectus,
-              morbi eget tincidunt in eu varius nibh, erat tempor inceptos quam
-              ornare suspendisse vestibulum, luctus in aliquam ac dui integer.
-              Lorem posuere eget vel turpis sodales fusce, morbi sit dui, metus
-              natoque fermentum egestas ipsum, commodo luctus feugiat dolor in
-              mauris suspendisse. Dictum donec mauris enim blandit.
+              <b>Dream Recall</b> provides you with so much more. When you sign
+              up you'll be automatically logged into your own custom{' '}
+              <b>Dream Desktop</b> where you'll find the tools you need to
+              record, revisit, and understand your dreams. Writing down your
+              dreams as soon as you wake up dramatically increases your ability
+              to remember details and it's what's in the details that really
+              matter.
+            </p>
+            <p>
+              Understanding your dreams can be crucial to your emotional and
+              mental health. Dreams are means by which we solve problems and
+              deal with deep emotions and lingering thoughts. Help bring clarity
+              to your dreams.
+            </p>
+            <p>
+              <b>
+                Let your Dream Desktop be the hub for your unconscious mind.
+              </b>
+            </p>
+          </div>
+        </div>
+        <div className="detail-text">
+          <div>
+            <h2>Record your dreams</h2>
+            <p>
+              Remember to login <b>every morning</b> as soon as you wake up and
+              write down as much as you can remember on the dream notepad! You
+              can save as many dreams you have per day (looking at you nap
+              dreamers) but <b>don't forget</b> to post each day! We
+              intentionally limit posts to only the current day because your
+              memory of your dream starts to fade and those important details go
+              with it.
             </p>
           </div>
           <img alt="post icon" src={require('../imgs/notepad-icon.png')} />
         </div>
-        <div className="right-text">
+        <div className="detail-text">
           <img alt="Calendar icon" src={require('../imgs/cal-icon.png')} />
           <div>
-            <h2>Calendar</h2>
+            <h2>Revisit your dreams</h2>
             <p>
-              Lorem ipsum dolor sit amet, justo ac massa consequat ac lectus,
-              morbi eget tincidunt in eu varius nibh, erat tempor inceptos quam
-              ornare suspendisse vestibulum, luctus in aliquam ac dui integer.
-              Lorem posuere eget vel turpis sodales fusce, morbi sit dui, metus
-              natoque fermentum egestas ipsum, commodo luctus feugiat dolor in
-              mauris suspendisse. Dictum donec mauris enim blandit.
+              {' '}
+              As <b>each day passes</b> and you add more dreams to your Dream
+              Dashboard you'll find your calendar view very helpful for
+              revisiting past dreams. Make it a <b>daily habit</b> to reread the
+              dreams you had the night before and see what you think they have
+              in common with last nights!
             </p>
           </div>
         </div>
-        <div className="left-text">
+        <div className="detail-text">
           <div>
-            <h2>Data</h2>
+            <h2>Analyze your dreams</h2>
             <p>
-              Lorem ipsum dolor sit amet, justo ac massa consequat ac lectus,
-              morbi eget tincidunt in eu varius nibh, erat tempor inceptos quam
-              ornare suspendisse vestibulum, luctus in aliquam ac dui integer.
-              Lorem posuere eget vel turpis sodales fusce, morbi sit dui, metus
-              natoque fermentum egestas ipsum, commodo luctus feugiat dolor in
-              mauris suspendisse. Dictum donec mauris enim blandit.
+              <b>COMING SOON </b> you'll have access to data showing recurring
+              themes in your dreams and the emotional connections between them.
+              Having a <b>birds eye view</b> of your ongoing dream themes will
+              help you make sense of it all – either giving you the foundation
+              needed to understand how to grow from any deeply rooted issues or
+              to just have fun with connecting the dots between the silliest
+              dreams you've ever had!
             </p>
           </div>
           <img alt="Data icon" src={require('../imgs/atom-icon.png')} />
         </div>
+        <div className="sign-up-request">
+          <h1>Don't let another night's dreams slip by</h1>
+          <Link to="/signup" className="btn">
+            Sign up, it's free!
+          </Link>
+        </div>
       </section>
       <footer>
-        <p>footer</p>
+        <p>
+          made w/ ❤ by{' '}
+          <a href="https://www.instagram.com/clkent/" target="_blank">
+            @clkent
+          </a>
+        </p>
       </footer>
     </div>
   );

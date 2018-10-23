@@ -10,11 +10,21 @@ export function LogIn(props) {
     return <Redirect to="/dashboard" />;
   }
   return (
-    <React.Fragment>
+    <div className="pages secondary">
       <Header />
-      <h1>Log In</h1>
-      <LoginForm />
-    </React.Fragment>
+      <div className="box">
+        <h1>Log In</h1>
+        <LoginForm />
+      </div>
+      <footer>
+        <p>
+          made w/ ❤ by{' '}
+          <a href="https://www.instagram.com/clkent/" target="_blank">
+            @clkent
+          </a>
+        </p>
+      </footer>
+    </div>
   );
 }
 

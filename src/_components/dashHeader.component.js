@@ -10,11 +10,15 @@ const DashHeader = props => {
   return (
     <header>
       {/* TODO: settings link */}
-      <img
+      {/* <img
         className="moon"
         alt="moon icon"
         src={require('../imgs/moon-color.png')}
-      />
+      /> */}
+      <div className="eyes dash-eyes">
+        <div className="eye" />
+        <div className="eye" />
+      </div>
       <button
         onClick={() => {
           props.dispatch(clearAuth());

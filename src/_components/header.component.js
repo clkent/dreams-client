@@ -6,6 +6,10 @@ const Header = () => (
     <NavLink to="/" className="logo" activeClassName="is-active" exact={true}>
       Dream Recall
     </NavLink>
+    <div className="eyes">
+      <div className="eye" />
+      <div className="eye" />
+    </div>
     <NavLink to="/signup" activeClassName="is-active">
       Sign Up
     </NavLink>

@@ -11,11 +11,21 @@ export function SignUp(props) {
   }
 
   return (
-    <React.Fragment>
+    <div className="pages secondary">
       <Header />
-      <h1>Sign Up</h1>
-      <SignUpForm />
-    </React.Fragment>
+      <div className="box">
+        <h1>Sign Up</h1>
+        <SignUpForm />
+      </div>
+      <footer>
+        <p>
+          made w/ ❤ by{' '}
+          <a href="https://www.instagram.com/clkent/" target="_blank">
+            @clkent
+          </a>
+        </p>
+      </footer>
+    </div>
   );
 }
 

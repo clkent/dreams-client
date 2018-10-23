@@ -83,7 +83,7 @@ button:focus {
   align-self: center;
 }
 
-/*Marketing Page css */
+/*Pages css */
 
 .main-container .pages {
   display: grid;
@@ -99,11 +99,98 @@ button:focus {
 .main-container .pages header {
   padding: 16px 2%;
   display: grid;
-  grid-template-columns: 200px 1fr 80px;
+  grid-template-columns: 160px 70px 1fr 80px;
   justify-items: end;
   width: 90%;
   margin: 0 auto;
   border-color: #fff;
+}
+
+.pages .eyes {
+  position: relative;
+  width: 100px;
+  height: 40px;
+  color: #fff;
+  line-height: 40px;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.eye:nth-last-child(1) {
+  margin-left: 26px;
+}
+
+.eye {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  background: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+.eye:before {
+  content: '';
+  position: absolute;
+  margin: auto;
+  width: 8px;
+  height: 8px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: rgba(20, 20, 20, 1);
+  animation: sleepyb 2s cubic infinite;
+}
+
+.eye:after {
+  content: '';
+  position: absolute;
+  width: calc(100% + 20px);
+  height: 0;
+  border-radius: 50%;
+  background: #4471e5;
+  left: -10px;
+  top: -10px;
+  animation: sleepya 10s infinite;
+}
+
+@keyframes sleepyb {
+  0%,
+  10% {
+    top: 0;
+  }
+  20%,
+  40% {
+    top: 70%;
+  }
+  50%,
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes sleepya {
+  0%,
+  10% {
+    height: 0;
+  }
+  20%,
+  40% {
+    height: 100%;
+  }
+  50%,
+  100% {
+    height: 0;
+  }
 }
 
 .pages header a {
@@ -154,29 +241,55 @@ button:focus {
   letter-spacing: 0.5px;
 }
 
-.wrap .btn {
+.wrap .btn,
+.sign-up-request .btn {
   border: 1px solid #fff;
   text-decoration: none;
   margin-top: 15px;
+  background: none;
 }
 
-.wrap .btn:hover {
-  box-shadow: 6px 6px rgba(0, 0, 0, 0.5);
+.wrap .btn:hover,
+.sign-up-request .btn:hover {
+  box-shadow: 6px 6px rgba(0, 0, 0, 0.3);
 }
 
 .pages .body {
-  margin: 60px 10%;
+  /* margin: 60px 10%; */
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 655px 1fr 1fr 1fr 300px;
 }
 
-.pages .body .left-text {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
+.pages .body .overview {
+  background-color: #15d7bb;
 }
-.pages .body .right-text {
+
+.pages .body .overview div {
+  margin: 0 auto;
+  background: url('../imgs/large-browser-pages.png') no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 800px;
+  height: 542px;
+  margin-top: 60px;
+}
+
+.pages .body .overview h2,
+.overview p {
+  padding: 5px 60px 5px 50px;
+  text-align: center;
+}
+
+.pages .body .overview h2 {
+  padding-top: 77px;
+}
+
+.pages .body .detail-text {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 1fr;
+  margin: 90px 10%;
 }
 
 .pages .body h2 {
@@ -185,7 +298,7 @@ button:focus {
 
 .pages .body p {
   font-size: 1.25em;
-  line-height: 1.5em;
+  line-height: 1.55em;
 }
 
 .pages .body img {
@@ -194,12 +307,89 @@ button:focus {
   justify-self: center;
 }
 
+.pages .sign-up-request {
+  text-align: center;
+  background: #15d7bb;
+  height: 300px;
+}
+
+.pages .sign-up-request h1 {
+  font-size: 3em;
+  max-width: 550px;
+  margin: 55px auto 40px auto;
+  color: #fff;
+}
+
+footer {
+  background: #4471e5;
+  padding: 0 5%;
+  color: #fff;
+  text-align: center;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* sign up css */
+.pages.secondary {
+  background: #4471e5;
+  display: grid;
+  grid-template-rows: 60px 1fr 50px;
+}
+
+.box {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.box h1 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 60px;
+}
+
+.box form {
+  text-align: center;
+  color: #fff;
+}
+
+.box form label {
+  font-size: 1.25em;
+}
+
+.box form input,
+.box form textarea {
+  margin-top: 10px;
+  width: 300px;
+  background: none;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.box form button {
+  border: 1px solid #ffffff;
+}
+
+.box form label .form-error {
+  font-size: 0.75em;
+  color: #e95d42;
+  font-weight: 600;
+  padding: 15px 0 0 0;
+  font-style: italic;
+}
+
 /* dashboard css */
 
 .main-container .dashboard {
   display: grid;
   grid-template-rows: 25px 1fr 135px;
   grid-template-columns: 100%;
+  background: #15d7bb;
 }
 
 .dashboard-container {
@@ -223,10 +413,10 @@ button:focus {
 /* dashboard header css */
 
 .main-container header {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 60px 80px 1fr;
   height: 25px;
-  border-bottom: 1px solid rgb(68, 68, 68);
+  border-bottom: 1px solid rgb(255, 255, 255, 0.25);
 }
 .main-container header .moon {
   width: 20px;
@@ -239,6 +429,11 @@ button:focus {
   background: none;
   text-transform: uppercase;
   font-weight: 600;
+  color: #fff;
+}
+
+.dash-eyes {
+  margin-left: 10px;
 }
 
 .close-btn {
@@ -345,8 +540,10 @@ nav.dock-nav button .cal-date {
 
 .calendar .rbc-event {
   padding: 4px 8px;
-  background-color: #15d7bb;
+  background-color: #4471e5;
   border-radius: 100px;
+  font-weight: 600;
+  font-size: 0.75em;
 }
 
 .calendar .rbc-show-more {
