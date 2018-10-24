@@ -10,9 +10,9 @@ export function Home(props) {
   }
   return (
     <div className="pages">
-      <section role="region" className="home-header">
+      <section className="home-header">
         <Navigation />
-        <div class="wrap">
+        <div className="wrap">
           <h1 className="underlined underlined--gradient">
             What are your dreams trying to tell you?
           </h1>
@@ -26,7 +26,7 @@ export function Home(props) {
           </Link>
         </div>
       </section>
-      <section role="region" className="body">
+      <section className="body">
         <div className="overview">
           <div>
             <h2>Paper and pen work great and all but...</h2>

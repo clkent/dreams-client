@@ -55,44 +55,47 @@ export class PostForm extends React.Component {
     //set up pristine and submitting to use in my return
     const { pristine, submitting } = this.props;
 
+    //form details
+    const details = (
+      <React.Fragment>
+        <div className="handle">
+          <button
+            className="close-btn"
+            onClick={() => this.props.dispatch(viewPostForm(false))}
+          >
+            <img alt="close button" src={require('../imgs/x.png')} />
+          </button>
+          <h3>{moment(Date.now()).format('MMM Do YY')}</h3>
+        </div>
+        <form
+          onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
+        >
+          <label>Title</label>
+          <Field
+            name="title"
+            component="input"
+            type="text"
+            placeholder="Title for your dream"
+          />
+          <label>What did you dream about?</label>
+          <Field
+            name="content"
+            component="textarea"
+            placeholder="Try and remember all of the little details..."
+          />
+          <button type="submit" disabled={pristine || submitting}>
+            Submit
+          </button>
+        </form>
+      </React.Fragment>
+    );
+
     return (
       <React.Fragment>
         <Media query="(max-width: 1024px)">
           {matches =>
             matches ? (
-              <div className="post-container small">
-                <div className="handle">
-                  <button
-                    className="close-btn"
-                    onClick={() => this.props.dispatch(viewPostForm(false))}
-                  >
-                    <img alt="close button" src={require('../imgs/x.png')} />
-                  </button>
-                  <h3>{moment(Date.now()).format('MMM Do YY')}</h3>
-                </div>
-                <form
-                  onSubmit={this.props.handleSubmit(values =>
-                    this.onSubmit(values)
-                  )}
-                >
-                  <label>Title</label>
-                  <Field
-                    name="title"
-                    component="input"
-                    type="text"
-                    placeholder="Title for your dream"
-                  />
-                  <label>What did you dream about?</label>
-                  <Field
-                    name="content"
-                    component="textarea"
-                    placeholder="Try and remember all of the little details..."
-                  />
-                  <button type="submit" disabled={pristine || submitting}>
-                    Submit
-                  </button>
-                </form>
-              </div>
+              <div className="post-container small">{details}</div>
             ) : (
               <Draggable
                 axis="both"
@@ -105,39 +108,7 @@ export class PostForm extends React.Component {
                 onStop={this.handleStop}
                 bounds="parent"
               >
-                <div className="post-container">
-                  <div className="handle">
-                    <button
-                      className="close-btn"
-                      onClick={() => this.props.dispatch(viewPostForm(false))}
-                    >
-                      <img alt="close button" src={require('../imgs/x.png')} />
-                    </button>
-                    <h3>{moment(Date.now()).format('MMM Do YY')}</h3>
-                  </div>
-                  <form
-                    onSubmit={this.props.handleSubmit(values =>
-                      this.onSubmit(values)
-                    )}
-                  >
-                    <label>Title</label>
-                    <Field
-                      name="title"
-                      component="input"
-                      type="text"
-                      placeholder="Title for your dream"
-                    />
-                    <label>What did you dream about?</label>
-                    <Field
-                      name="content"
-                      component="textarea"
-                      placeholder="Try and remember all of the little details..."
-                    />
-                    <button type="submit" disabled={pristine || submitting}>
-                      Submit
-                    </button>
-                  </form>
-                </div>
+                <div className="post-container">{details}</div>
               </Draggable>
             )
           }

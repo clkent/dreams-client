@@ -650,10 +650,10 @@ footer a {
 nav.dock-nav {
   display: flex;
   justify-content: center;
-  background: url('../imgs/shelf.png') no-repeat bottom center;
+  background: url('../imgs/shelf.png') no-repeat center center;
   justify-self: center;
   min-width: 100%;
-  margin-bottom: 25px;
+  min-height: 99%;
 }
 
 nav.dock-nav button {
@@ -664,6 +664,7 @@ nav.dock-nav button {
   border: none;
   background: none;
   cursor: pointer;
+  height: 85px;
 }
 
 nav.dock-nav button:hover {

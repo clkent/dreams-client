@@ -13,6 +13,7 @@ export const fetchProtectedDataError = error => ({
   error
 });
 
+//TODO: remove
 export const fetchProtectedData = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/protected`, {

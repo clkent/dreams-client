@@ -36,12 +36,10 @@ export const authError = error => ({
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
 const storeAuthInfo = (authToken, dispatch) => {
-  console.log(`CURRENT TOKEN: ${authToken}`);
   const decodedToken = jwtDecode(authToken);
-
+  saveAuthToken(authToken);
   dispatch(setAuthToken(authToken));
   dispatch(authSuccess(decodedToken.user));
-  saveAuthToken(authToken);
 };
 
 export const login = (username, password) => dispatch => {

@@ -6,7 +6,11 @@ export default function Footer() {
       <footer role="contentinfo">
         <p>
           made w/ ❤ by{' '}
-          <a href="https://www.instagram.com/clkent/" target="_blank">
+          <a
+            href="https://www.instagram.com/clkent/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             @clkent
           </a>
         </p>

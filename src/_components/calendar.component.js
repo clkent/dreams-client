@@ -44,6 +44,20 @@ class Calendar extends React.Component {
       viewPost = <ViewPost />;
     }
 
+    const handle = (
+      <React.Fragment>
+        <div className="handle">
+          <button
+            className="close-btn"
+            onClick={() => this.props.dispatch(viewCalendar(false))} //this.props.dispatch(viewCalendar(false))
+          >
+            <img alt="close button" src={require('../imgs/x.png')} />
+          </button>
+          <h3>Calendar</h3>
+        </div>
+      </React.Fragment>
+    );
+
     return (
       <React.Fragment>
         {/* render appropriate content based on media query */}
@@ -51,15 +65,7 @@ class Calendar extends React.Component {
           {matches =>
             matches ? (
               <div className="calendar-container small">
-                <div className="handle">
-                  <button
-                    className="close-btn"
-                    onClick={() => this.props.dispatch(viewCalendar(false))} //this.props.dispatch(viewCalendar(false))
-                  >
-                    <img alt="close button" src={require('../imgs/x.png')} />
-                  </button>
-                  <h3>Calendar</h3>
-                </div>
+                {handle}
                 <div className="calendar">
                   <BigCalendar
                     localizer={localizer}
@@ -87,15 +93,7 @@ class Calendar extends React.Component {
                 bounds="parent"
               >
                 <div className="calendar-container">
-                  <div className="handle">
-                    <button
-                      className="close-btn"
-                      onClick={() => this.props.dispatch(viewCalendar(false))}
-                    >
-                      <img alt="close button" src={require('../imgs/x.png')} />
-                    </button>
-                    <h3>Calendar</h3>
-                  </div>
+                  {handle}
                   <div className="calendar">
                     <BigCalendar
                       localizer={localizer}
