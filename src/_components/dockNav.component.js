@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { viewCalendar, viewPostForm } from '../_actions/dashboard.action';
-import '../css/dockNav.css';
+import '../css/index.css';
 
 const DockNav = props => {
   return (

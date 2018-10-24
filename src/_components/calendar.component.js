@@ -12,8 +12,7 @@ import moment from 'moment';
 
 import Media from 'react-media';
 
-//TODO: swap out when css is in correct folder
-import '../css/dockNav.css';
+import '../css/index.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 // Setup the localizer by providing the moment Object to the correct localizer.

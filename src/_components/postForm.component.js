@@ -18,7 +18,7 @@ import moment from 'moment';
 
 import { reRender } from '../_actions/dashboard.action';
 import { submitPostForm } from '../_actions/post.action';
-import '../css/dockNav.css'; //TODO: replace w/ correct css file
+import '../css/index.css';
 import { viewPostForm } from '../_actions/dashboard.action';
 
 export class PostForm extends React.Component {

@@ -7,8 +7,7 @@ import Draggable from 'react-draggable';
 import { setCurrentPost, deletePost } from '../_actions/post.action';
 
 import Media from 'react-media';
-//TODO: swap out when css is in correct folder
-import '../css/dockNav.css';
+import '../css/index.css';
 class ViewPost extends React.Component {
   render() {
     //setting up post variable to use in my return
