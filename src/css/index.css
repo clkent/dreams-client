@@ -465,11 +465,11 @@ footer a {
   border: 1px solid #ffffff;
 }
 
-.box form label .form-error {
+.box form .form-error {
   font-size: 0.75em;
   color: #e95d42;
   font-weight: 600;
-  padding: 15px 0 0 0;
+  padding: 15px 0;
   font-style: italic;
 }
 
