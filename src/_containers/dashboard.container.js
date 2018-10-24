@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import DashHeader from '../_components/dashHeader.component';
+import DashNavigation from '../_components/dashNavigation.component';
 
 import PostForm from '../_components/postForm.component';
 import Calendar from '../_components/calendar.component';
@@ -25,7 +25,7 @@ class Dashboard extends React.Component {
     }
     return (
       <div className="dashboard">
-        <DashHeader />
+        <DashNavigation />
         <div className="dashboard-container">
           <Media query="(max-width: 1024px)">
             {matches =>
@@ -49,22 +49,10 @@ class Dashboard extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
-  console.log('CURRENT STATE:');
-  console.log(state);
-  return {
-    loggedIn: state.auth.currentUser !== null,
-    viewCalendar: state.dashboard.viewCalendar,
-    viewPostForm: state.dashboard.viewPostForm
-  };
-}
-
-//FIXME: when I no longer need my console.logs this is a cleaner way to write mapStateToProps
-// const mapStateToProps = state => ({
-//   loggedIn: state.auth.currentUser !== null,
-//   newPostToggle: true,
-//   calendarToggle: true,
-//   postToggle: false
-// });
+const mapStateToProps = state => ({
+  loggedIn: state.auth.currentUser !== null,
+  viewCalendar: state.dashboard.viewCalendar,
+  viewPostForm: state.dashboard.viewPostForm
+});
 
 export default connect(mapStateToProps)(Dashboard);

@@ -1,5 +1,3 @@
-/*TODO: move css in to appropriate files*/
-
 /* main app css */
 html,
 body {
@@ -11,7 +9,7 @@ body {
   height: 100%;
 }
 
-#root div.main-container {
+#root main.main-container {
   display: grid;
   grid-template-columns: 100%;
   min-height: 100%;
@@ -97,7 +95,7 @@ button:focus {
   background: #4471e5;
 }
 
-.main-container .pages header {
+.main-container .pages nav {
   padding: 16px 2%;
   display: grid;
   grid-template-columns: 160px 0px 1fr 60px;
@@ -107,12 +105,12 @@ button:focus {
   border-color: #fff;
 }
 
-.pages header a {
+.pages nav a {
   color: #fff;
   text-decoration: none;
 }
 
-.pages header a:hover {
+.pages nav a:hover {
   text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
 }
 
@@ -221,7 +219,7 @@ button:focus {
   height: 400px;
 }
 
-.pages .sign-up-request h1 {
+.pages .sign-up-request h2 {
   font-size: 38px;
   max-width: 550px;
   margin: 75px auto 40px auto;
@@ -260,11 +258,11 @@ footer a {
     font-size: 20px;
   }
 
-  .main-container .pages header {
+  .main-container .pages nav {
     grid-template-columns: 160px 70px 1fr 70px;
   }
 
-  .pages .sign-up-request h1 {
+  .pages .sign-up-request h2 {
     font-size: 49px;
   }
 }
@@ -334,7 +332,7 @@ footer a {
     height: 300px;
   }
 
-  .pages .sign-up-request h1 {
+  .pages .sign-up-request h2 {
     margin: 55px auto 40px auto;
   }
 
@@ -525,7 +523,7 @@ footer a {
 
 /* dashboard header css */
 
-.main-container header {
+.main-container nav {
   display: grid;
   grid-template-columns: 60px 80px 1fr;
   height: 25px;
@@ -623,7 +621,7 @@ footer a {
   }
 }
 
-.main-container header button {
+.main-container nav button {
   border: none;
   background: none;
   text-transform: uppercase;

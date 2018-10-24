@@ -3,18 +3,12 @@ import { clearAuth } from '../_actions/auth.action';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-const DashHeader = props => {
+const DashNavigation = props => {
   if (!props.loggedIn) {
     return <Redirect to="/" />;
   }
   return (
-    <header>
-      {/* TODO: settings link */}
-      {/* <img
-        className="moon"
-        alt="moon icon"
-        src={require('../imgs/moon-color.png')}
-      /> */}
+    <nav role="navigation">
       <div className="eyes dash-eyes">
         <div className="eye" />
         <div className="eye" />
@@ -27,7 +21,7 @@ const DashHeader = props => {
       >
         Log out
       </button>
-    </header>
+    </nav>
   );
 };
 
@@ -35,4 +29,4 @@ const mapStateToProps = state => ({
   loggedIn: state.auth.currentUser !== null
 });
 
-export default connect(mapStateToProps)(DashHeader);
+export default connect(mapStateToProps)(DashNavigation);

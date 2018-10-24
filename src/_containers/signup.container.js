@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import Header from '../_components/header.component';
+import Navigation from '../_components/navigation.component';
 import SignUpForm from '../_components/signupForm.component';
+import Footer from '../_components/footer.component';
 
 export function SignUp(props) {
   if (props.loggedIn) {
@@ -12,19 +13,12 @@ export function SignUp(props) {
 
   return (
     <div className="pages secondary">
-      <Header />
+      <Navigation />
       <div className="box">
         <h1>Sign Up</h1>
         <SignUpForm />
       </div>
-      <footer>
-        <p>
-          made w/ ❤ by{' '}
-          <a href="https://www.instagram.com/clkent/" target="_blank">
-            @clkent
-          </a>
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 }

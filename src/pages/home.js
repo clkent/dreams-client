@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import Header from '../_components/header.component';
+import Navigation from '../_components/navigation.component';
+import Footer from '../_components/footer.component';
 
 export function Home(props) {
   if (props.loggedIn) {
@@ -9,19 +10,23 @@ export function Home(props) {
   }
   return (
     <div className="pages">
-      <section className="home-header">
-        <Header />
+      <section role="region" className="home-header">
+        <Navigation />
         <div class="wrap">
           <h1 className="underlined underlined--gradient">
             What are your dreams trying to tell you?
           </h1>
           <p>keeping a dream journal can help unlock your unconscious mind</p>
-          <Link to="/signup" className="btn">
+          <Link
+            aria-label="Start tonight - click this button to go to sign up page"
+            to="/signup"
+            className="btn"
+          >
             Start Tonight
           </Link>
         </div>
       </section>
-      <section className="body">
+      <section role="region" className="body">
         <div className="overview">
           <div>
             <h2>Paper and pen work great and all but...</h2>
@@ -60,14 +65,21 @@ export function Home(props) {
               with it.
             </p>
           </div>
-          <img alt="post icon" src={require('../imgs/notepad-icon.png')} />
+          <img
+            aria-label="illustration of a notepad"
+            alt="notepad"
+            src={require('../imgs/notepad-icon.png')}
+          />
         </div>
         <div className="detail-text">
-          <img alt="Calendar icon" src={require('../imgs/cal-icon.png')} />
+          <img
+            aria-label="illustration of a calendar"
+            alt="Calendar"
+            src={require('../imgs/cal-icon.png')}
+          />
           <div>
             <h2>Revisit your dreams</h2>
             <p>
-              {' '}
               As <b>each day passes</b> and you add more dreams to your Dream
               Dashboard you'll find your calendar view very helpful for
               revisiting past dreams. Make it a <b>daily habit</b> to reread the
@@ -89,23 +101,24 @@ export function Home(props) {
               dreams you've ever had!
             </p>
           </div>
-          <img alt="Data icon" src={require('../imgs/atom-icon.png')} />
+          <img
+            aria-label="illustration of an atom"
+            alt="Data"
+            src={require('../imgs/atom-icon.png')}
+          />
         </div>
         <div className="sign-up-request">
-          <h1>Don't let another night's dreams slip by</h1>
-          <Link to="/signup" className="btn">
+          <h2>Don't let another night's dreams slip by</h2>
+          <Link
+            aria-label="Sign Up! - click this button to go to the sign up page"
+            to="/signup"
+            className="btn"
+          >
             Sign up, it's free!
           </Link>
         </div>
       </section>
-      <footer>
-        <p>
-          made w/ ❤ by{' '}
-          <a href="https://www.instagram.com/clkent/" target="_blank">
-            @clkent
-          </a>
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 }

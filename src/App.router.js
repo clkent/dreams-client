@@ -11,7 +11,7 @@ import NotFound from './pages/notFound';
 import 'redux-notifications/lib/styles.css';
 
 const AppRouter = () => (
-  <div className="main-container">
+  <main role="main" className="main-container">
     <Notifs />
     <BrowserRouter>
       <Switch>
@@ -22,7 +22,7 @@ const AppRouter = () => (
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
-  </div>
+  </main>
 );
 
 export default AppRouter;
