@@ -6,6 +6,10 @@ Let your Dream Desktop be the hub for your unconscious mind.
 
 [Dream Recall](https://dream-recall.herokuapp.com/)
 
+**_Demo Account_**
+username: rickC137
+password: wubbalubbadubdub
+
 ## Table of Contents
 
 - [Tech Stack](#tech-stack)
