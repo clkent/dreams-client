@@ -29,80 +29,126 @@ This project was built with the following:
 ## Screenshots
 
 **_Home Page_**
+Entry point into the site
 ![Home Page](./ss/home-page.png)
 
 **_Sign Up_**
+Sign up form
 ![Sign up](./ss/sign-up.png)
 
 **_Login_**
+Login form
 ![Login](./ss/log-in.png)
 
 **_Dashboard Dock Navigation_**
+Navigation for the dream dashboard that allows the user to access the different views
 ![Dock Nav](./ss/dock-navigation.png)
 
 **_Calendar View_**
+The calendar allows the user to easily access their past dreams based on date
 ![Calendar](./ss/calendar-view.png)
 
 **_Dream Post View_**
+The dream post itself opens after clicking on the dream within the calendar view
 ![Dream Post](./ss/dream-post-view.png)
 
 **_Add a Dream Form_**
+The notepad icon opens the add a dream form.  
 ![Dream Form](./ss/add-a-dream-form.png)
 
 ## Description of Key Parts of Project
 
-After creation, your project should look like this:
-
-```
-my-app/
-  README.md
-  node_modules/
-  package.json
-  public/
-    index.html
-    favicon.ico
-  src/
-    App.css
-    App.js
-    App.test.js
-    index.css
-    index.js
-    logo.svg
-```
-
-For the project to build, **these files must exist with exact filenames**:
-
-- `public/index.html` is the page template;
-- `src/index.js` is the JavaScript entry point.
-
-You can delete or rename the other files.
-
-You may create subdirectories inside `src`. For faster rebuilds, only files inside `src` are processed by Webpack.<br>
-You need to **put any JS and CSS files inside `src`**, otherwise Webpack won’t see them.
-
-Only files inside `public` can be used from `public/index.html`.<br>
-Read instructions below for using assets from JavaScript and HTML.
-
-You can, however, create more top-level directories.<br>
-They will not be included in the production build so you can use them for things like documentation.
-
-If you have Git installed and your project is not part of a larger repository, then a new repository will be initialized resulting in an additional `.git/` top-level directory.
+The authorization and user creation happens in the auth and users actions and reducers connected to the signupForm and loginForm components and connected to their respective server side models. The journaling aspect of the project is very straight forward. There are post actions and a reducer which connect to the calendar, postForm, postFormContent, and postView components. The server side post endpoint manages the creation and deletion of posts.
 
 ### Client Folder Structure
 
-In the project directory, you can run:
+```
+public/
+  favicon.ico
+  index.html
+  manifest.json
+  src/
+    _actions/
+      auth.action.js
+      dashboard.action.js
+      post.action.js
+      protected-data.js
+      users.action.js
+      utils.js
+    _components/
+      calendar.component.js
+      dashNavigation.component.js
+      dockNav.component.js
+      footer.component.js
+      input.component.js
+      loginForm.component.js
+      navigation.component.js
+      postForm.component.js
+      postFormContent.component.js
+      postView.component.js
+      requiresLogin.component.js
+      signupForm.component.js
+    _containers/
+      dashboard.contanier.js
+      login.container.js
+      signup.container.js
+    _reducers/
+      auth.reducer.js
+      dashboard.reducer.js
+      post.reducer.js
+      protected-data.js
+    css/
+      index.css
+    imgs/
+    pages/
+      home.js
+      notFound.js
+    utils/
+      local-storage.js
+      serviceWorker.js
+      validators.js
+    App.router.js
+    config.js
+    index.css
+    index.js
+    store.js
+  ss/
+  package-lock.json
+  package.json
+  README.md
+  static.json
+```
 
 ### Server Folder Structure
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```
+auth/
+  auth.router.js
+  auth.strategy.js
+db/
+  seed/
+    posts.js
+    users.js
+post/
+  post.model.js
+  post.router.js
+test/
+  post.test.js
+user/
+  user.model.js
+  user.router.js
+config.js
+db.mongoose.js
+package-lock.json
+package.json
+server.js
+```
 
 ## Future Features
 
-`YEA`
+- Data analysis on each dream post that uses IBM's Watson Natural Language API to pull out emotions and general themes in each.
+- Overview of data analysis on a weekly and ongoing basis to see patterns in your dreams.
+- Dream dictionary that gives you ideas around general meaning for the themes that keep coming up.
 
 ## Feedback
 
