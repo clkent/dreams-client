@@ -1,4 +1,8 @@
-This is what my app is all about!
+Dream Recall at it's core is a dream journal, but it's also so much more. When you sign up you'll be automatically logged into your own custom Dream Desktop where you'll find the tools you need to record, revisit, and understand your dreams. Writing down your dreams as soon as you wake up dramatically increases your ability to remember details and it's what's in the details that really matter.
+
+Understanding your dreams can be crucial to your emotional and mental health. Dreams are means by which we solve problems and deal with deep emotions and lingering thoughts. Help bring clarity to your dreams.
+
+Let your Dream Desktop be the hub for your unconscious mind.
 
 [Dream Recall](https://dream-recall.herokuapp.com/)
 
@@ -23,6 +27,7 @@ This project was built with the following:
 
 
 ## Screenshots
+
 
 
 ## Description of Key Parts of Project
