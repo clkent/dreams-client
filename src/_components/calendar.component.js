@@ -36,8 +36,6 @@ class Calendar extends React.Component {
   }
 
   render() {
-    //TODO: make day view the only view available for mobile
-
     //if postId has a value than display the post - on close (inside ViewPost) it sets the postId back to null
     let viewPost;
     if (this.props.postId) {
