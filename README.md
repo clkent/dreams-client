@@ -29,25 +29,25 @@ This project was built with the following:
 ## Screenshots
 
 **_Home Page_**
-![Home Page](clkent.github.com/dreams-client/ss/home-page.png)
+![Home Page](./ss/home-page.png)
 
 **_Sign Up_**
-![Sign up](clkent.github.com/dreams-client/ss/sign-up.png)
+![Sign up](./ss/sign-up.png)
 
 **_Login_**
-![Login](clkent.github.com/dreams-client/ss/log-in.png)
+![Login](./ss/log-in.png)
 
 **_Dashboard Dock Navigation_**
-![Dock Nav](clkent.github.com/dreams-client/ss/dock-navigation.png)
+![Dock Nav](./ss/dock-navigation.png)
 
 **_Calendar View_**
-![Calendar](clkent.github.com/dreams-client/ss/calendar-view.png)
+![Calendar](./ss/calendar-view.png)
 
 **_Dream Post View_**
-![Dream Post](clkent.github.com/dreams-client/ss/dream-post-view.png)
+![Dream Post](./ss/dream-post-view.png)
 
 **_Add a Dream Form_**
-![Dream Form](clkent.github.com/dreams-client/ss/add-a-dream-form.png)
+![Dream Form](./ss/add-a-dream-form.png)
 
 ## Description of Key Parts of Project
 
