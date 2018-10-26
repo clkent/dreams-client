@@ -152,4 +152,4 @@ server.js
 
 ## Feedback
 
-I am always open to [your feedback] or feature requests (https://github.com/clkent/dreams-client/issues). Thanks for checking out Dream Recall!
+I am always open to [your feedback](https://github.com/clkent/dreams-client/issues) or feature requests. Thanks for checking out Dream Recall!
