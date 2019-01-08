@@ -7,6 +7,7 @@ import SignUp from './_containers/signup.container';
 import LogIn from './_containers/login.container';
 import Dashboard from './_containers/dashboard.container';
 import NotFound from './pages/notFound';
+import Demo from './utils/demo';
 
 import 'redux-notifications/lib/styles.css';
 
@@ -19,6 +20,7 @@ const AppRouter = () => (
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={LogIn} />
         <Route path="/dashboard" component={Dashboard} />
+        <Route exact path="/demo" component={Demo} />
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>

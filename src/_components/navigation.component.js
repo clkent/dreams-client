@@ -16,6 +16,9 @@ const Navigation = () => (
       <div className="eye" />
       <div className="eye" />
     </div>
+    <NavLink aria-label="link to demo dashboard page" to="/demo">
+      Demo
+    </NavLink>
     <NavLink
       aria-label="link to sign up page"
       to="/signup"

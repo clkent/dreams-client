@@ -98,7 +98,7 @@ button:focus {
 .main-container .pages nav {
   padding: 16px 2%;
   display: grid;
-  grid-template-columns: 160px 0px 1fr 60px;
+  grid-template-columns: 160px 0px 1fr 70px 60px;
   justify-items: end;
   width: 90%;
   margin: 0 auto;
@@ -259,7 +259,7 @@ footer a {
   }
 
   .main-container .pages nav {
-    grid-template-columns: 160px 70px 1fr 70px;
+    grid-template-columns: 160px 70px 1fr 80px 70px;
   }
 
   .pages .sign-up-request h2 {
